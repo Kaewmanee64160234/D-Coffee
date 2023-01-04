@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useMenuStore = defineStore('menu',()=>{
-    const add_on = [
+    const add_on = ref([
         {name:'sugar 0 ',price:0},
         {name:'sugar 25 ',price:0},
         {name:'sugar 50 ',price:0},
@@ -18,6 +18,6 @@ export const useMenuStore = defineStore('menu',()=>{
         {name:'bubble',price:5},
         {name:'Konjac jelly',price:5},
     ]
-
+) 
     return {add_on}
 })
