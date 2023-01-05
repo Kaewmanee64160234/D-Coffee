@@ -12,13 +12,16 @@ const login = async () => {
     console.log("success");
   }
 };
+const reset = () => {
+    form.value?.reset();
+}
 </script>
 
 <template>
     <v-app> 
         <v-main class="bg-blue-grey-darken-2 pa-16">
             <v-card width="400px" class="mx-auto">
-                <v-card-title primary-title class="text-center"> Login </v-card-title>
+                <v-card-title primary-title class="text-center text-h6 font-weight-bold"> Login </v-card-title>
                 <v-card-text>
                     <v-form ref="form" v-model="valid">
                         <v-text-field 
