@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useMenuStore } from "../stores/menu";
 const menuStore = useMenuStore();
+const listPromotion = menuStore.promo;
 
 const open = () => {
   menuStore.dialogPromo1 = true;
@@ -25,7 +26,7 @@ const backToDi1 = () => {
 </script>
 <template>
   <v-row justify="center">
-    <v-dialog v-model="menuStore.dialogPromo1" persistent>
+    <v-dialog v-model="menuStore.dialogPromo1" persistent width="80%" >
       <template v-slot:activator="{ props }">
         <v-btn color="primary" v-bind="props" @click="open">
           Promotions
@@ -38,33 +39,16 @@ const backToDi1 = () => {
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col>
-                <h1>AIS</h1>
+              <v-col v-for="item in listPromotion" :key="item.point">
+                <h3>{{item.name}}</h3>
                 <v-img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"></v-img>
-              </v-col>
-              <v-col>
-                <h1>TRUE</h1>
-                <v-img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/True_Corporation_%28Thailand%29.svg/1200px-True_Corporation_%28Thailand%29.svg.png"></v-img>
-              </v-col>
-              <v-col>
-                <h1>DTAC</h1>
-                <v-img
-                  src="https://storage.googleapis.com/techsauce-prod/ugc/uploads/2020/4/Propeller_BLUE+dtac_Black_(002).PNG"></v-img>
-              </v-col>
+                  :src="item.img"></v-img>
+                  <v-btn color="black" variant="text" @click="open2">code</v-btn>
+             
+                </v-col>
+             
             </v-row>
-            <v-row>
-              <v-col>
-                <v-btn color="black" variant="text" @click="open2">code</v-btn>
-              </v-col>
-              <v-col>
-                <v-btn color="black" variant="text" @click="open2">code</v-btn>
-              </v-col>
-              <v-col>
-                <v-btn color="black" variant="text" @click="open2">code</v-btn>
-              </v-col>
-            </v-row>
+      
           </v-container>
         </v-card-text>
         <v-card-actions>

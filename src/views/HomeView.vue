@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js"
+import PromotionDialog from '@/components/PromotionDialog.vue';
 
 </script>
 
@@ -59,11 +60,13 @@ import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAc
           </td>
         </tr>
         <tr class="group-button">
-
-          <v-btn>Menu</v-btn>
-          <v-btn>Menu</v-btn>
-          <v-btn>Menu</v-btn>
-          <v-btn>Menu</v-btn>
+<td>
+  <PromotionDialog/>
+  <v-btn>Menu</v-btn>
+  <v-btn>Menu</v-btn>
+  <v-btn>Menu</v-btn>
+</td>
+         
         </tr>
         </td>
         </tr>
