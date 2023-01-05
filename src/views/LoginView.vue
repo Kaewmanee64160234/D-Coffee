@@ -64,6 +64,7 @@ const forgot = () => {
                     <v-btn color="secondary" @click="forgot">Forgot password</v-btn>
                 </v-card-actions>
                 </v-card>
+                
         </v-main>
     </v-app>
 </template>
