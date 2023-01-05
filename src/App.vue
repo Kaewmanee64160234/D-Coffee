@@ -12,7 +12,7 @@ const login = (userName: string): void => {
 </script>
 
 <template>
-  <LoginView v-if="!isLogin"/>
+  <LoginView v-if="!isLogin" @login="login"/>
   <MainView v-if="isLogin"/>
 </template>
 
