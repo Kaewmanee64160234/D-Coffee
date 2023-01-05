@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {useMemberStore} from "@/stores/member"
-import { ref } from "vue";
 const memberStore = useMemberStore();
 </script>
 <template>
