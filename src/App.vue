@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
 import MainView from './views/MainView.vue';
 import LoginView from './views/LoginView.vue';
@@ -21,4 +22,5 @@ const enter = (EnterName: string): void => {
   <ForgotPassView @enter="enter"/>
 </template>
 
-<style scoped></style>
+
+
