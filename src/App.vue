@@ -9,11 +9,16 @@ const isLogin = computed(() => {
 const login = (userName: string): void => {
   loginName.value = userName;
 };
+
+const enter = (EnterName: string): void => {
+  loginName.value = EnterName;
+};
 </script>
 
 <template>
   <LoginView v-if="!isLogin" @login="login"/>
   <MainView v-if="isLogin"/>
+  <ForgotPassView @enter="enter"/>
 </template>
 
 <style scoped></style>

@@ -10,16 +10,18 @@ const valid = ref(true);
 const form = ref<InstanceType<typeof VForm> | null>(null);
 const login = async () => {
   const { valid } = await form.value!.validate();
-  loginStore.login(loginName.value);
+  if (valid) {
+    loginStore.login(loginName.value);
+  }
 };
+
 const reset = () => {
     form.value?.reset();
 }
 
 const forgot = () => {
-    
-}
 
+}
 </script>
 
 <template>
@@ -59,7 +61,7 @@ const forgot = () => {
                     <v-btn color="error" @click="reset">Clear</v-btn>
                 </v-card-actions>
                 <v-card-actions class="justify-center">
-                    <v-btn color="secondary" >Forgot password</v-btn>
+                    <v-btn color="secondary" @click="forgot">Forgot password</v-btn>
                 </v-card-actions>
                 </v-card>
         </v-main>
