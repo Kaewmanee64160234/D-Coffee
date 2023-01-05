@@ -19,5 +19,13 @@ export const useMenuStore = defineStore('menu',()=>{
         {name:'Konjac jelly',price:5},
     ]
 ) 
-    return {add_on}
+const frameList = ref([      
+    {
+      name: "ชานม",
+      cost: "ราคา 10 บาท",
+      img: "https://i.pinimg.com/736x/1c/b1/ec/1cb1ec513524b061acd390b872dffedc.jpg",
+    },
+  ]);
+  
+    return {add_on,frameList}
 })
