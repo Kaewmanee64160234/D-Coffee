@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useMenuStore = defineStore('menu',()=>{
     const dialogPromo1 = ref(false); 
-const dialogPromo2 = ref(false); 
+    const dialogPromo2 = ref(false); 
     const add_on = ref([
         {name:'sugar 0 ',price:0},
         {name:'sugar 25 ',price:0},
@@ -21,6 +21,15 @@ const dialogPromo2 = ref(false);
         {name:'Konjac jelly',price:5},
     ]
 ) 
+
+  const useMenuStore = defineStore('promotion',()=>{
+  const promo = ref([
+      {name:'แฮปปี้รับแต้ม',price:0, point:50, code:'HAPPY250'},
+      {name:'แลกคะแนนลดราคา',price:10, point:100, code:'Point10010'},
+      {name:'ช้อปครบลดราคา',price:5,point:0, code:'Shop1005'}
+
+  ]
+) 
 const frameList = ref([      
     {
       name: "ชานม",
@@ -29,7 +38,8 @@ const frameList = ref([
     },
   ]);
   
-    return {add_on,frameList}
+    return {add_on,frameList,promo}
+})
 
     return {add_on,dialogPromo1,dialogPromo2}
 })
