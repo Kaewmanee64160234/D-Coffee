@@ -56,8 +56,8 @@ const reset = () => {
                     <v-btn color="success" @click="login">Login</v-btn>
                     <v-btn color="error" @click="reset">Clear</v-btn>
                 </v-card-actions>
-                <v-card-actions>
-                    <v-btn></v-btn>
+                <v-card-actions class="justify-center">
+                    <v-btn color="secondary">Forgot password</v-btn>
                 </v-card-actions>
                 </v-card>
         </v-main>
