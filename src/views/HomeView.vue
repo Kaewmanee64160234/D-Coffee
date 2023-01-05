@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js"
+
 </script>
 
 <template>
   <v-app>
-
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
         <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" title="Sandra Adams"
