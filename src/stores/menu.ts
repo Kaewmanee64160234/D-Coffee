@@ -20,6 +20,12 @@ export const useMenuStore = defineStore("menu", () => {
     { name: "bubble", price: 5 },
     { name: "Konjac jelly", price: 5 },
   ]);
+
+  const promo = ref([
+    { name: "แฮปปี้รับแต้ม", price: 0, point: 50, code: "HAPPY250" },
+    { name: "แลกคะแนนลดราคา", price: 10, point: 100, code: "Point10010" },
+    { name: "ช้อปครบลดราคา", price: 5, point: 0, code: "Shop1005" },
+  ]);
   const frameList = ref([
     {
       name: "ชานม",
@@ -28,5 +34,5 @@ export const useMenuStore = defineStore("menu", () => {
     },
   ]);
 
-  return { add_on, dialogPromo1, dialogPromo2, frameList };
+  return { add_on, dialogPromo1, dialogPromo2, frameList, promo };
 });
