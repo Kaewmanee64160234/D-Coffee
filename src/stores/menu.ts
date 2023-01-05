@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export const useMenuStore = defineStore("menu", () => {
   const dialogPromo1 = ref(false);
   const dialogPromo2 = ref(false);
+  const realCode = ref("");
   const add_on = ref([
     { name: "sugar 0 ", price: 0 },
     { name: "sugar 25 ", price: 0 },
@@ -22,12 +23,10 @@ export const useMenuStore = defineStore("menu", () => {
   ]);
 
   const promo = ref([
-    { name: "แฮปปี้รับแต้ม", price: 0, point: 50, code: "HAPPY250" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { name: "แลกคะแนนลดราคา", price: 10, point: 100, code: "Point10010" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { name: "ช้อปครบลดราคา", price: 5, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
+    {id:1, name: "แฮปปี้รับแต้ม", price: 0, point: 50, code: "HAPPY250" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
+    {id:2, name: "แลกคะแนนลดราคา", price: 10, point: 100, code: "Point10010" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
+    {id:3, name: "ช้อปครบลดราคา", price: 5, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
+    {id:4, name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
   ]);
   const frameList = ref([
     {
@@ -37,5 +36,11 @@ export const useMenuStore = defineStore("menu", () => {
     },
   ]);
 
-  return { add_on, dialogPromo1, dialogPromo2, frameList, promo };
+  const checkCode = (idCode: number)=>{
+    const correctCode = promo.value.findIndex(code => code.id === idCode );
+     realCode.value =   promo.value[correctCode].code
+
+
+  }
+  return { add_on, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode};
 });

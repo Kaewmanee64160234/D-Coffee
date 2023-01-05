@@ -3,7 +3,9 @@ import { ref } from "vue";
 import { useMenuStore } from "../stores/menu";
 const menuStore = useMenuStore();
 const listPromotion = menuStore.promo;
-
+let namePromotion = ref("");
+let tempId = ref();
+const CodeInput = ref("");
 const open = () => {
   menuStore.dialogPromo1 = true;
   menuStore.dialogPromo2 = false;
@@ -12,12 +14,27 @@ const close = () => {
   menuStore.dialogPromo1 = false;
   menuStore.dialogPromo2 = false;
 };
-const open2 = () => {
+const open2 = (namePromo:string,id:number) => {
   menuStore.dialogPromo1 = false;
   menuStore.dialogPromo2 = true
+  namePromotion.value = namePromo;
+  tempId.value = id;
+
 };
 const finishCode = () => {
-  menuStore.dialogPromo2 = false;
+  menuStore.checkCode(tempId.value);
+  if(menuStore.realCode===  CodeInput.value ){
+    menuStore.dialogPromo2 = false;
+    tempId.value = "";
+    CodeInput.value = "";
+
+
+  }
+  else{
+    menuStore.dialogPromo2 = true;
+
+  }
+ 
 }
 const backToDi1 = () => {
   menuStore.dialogPromo2 = false;
@@ -43,7 +60,7 @@ const backToDi1 = () => {
                 <h3>{{item.name}}</h3>
                 <v-img
                   :src="item.img"></v-img>
-                  <v-btn color="black" variant="text" @click="open2">code</v-btn>
+                  <v-btn color="black" variant="text" @click="open2(item.name,item.id)">code</v-btn>
              
                 </v-col>
              
@@ -67,12 +84,12 @@ const backToDi1 = () => {
       </template>
       <v-card>
         <v-card-title>
-          <span class="text-h5">Code</span>
+          <span class="text-h5">{{namePromotion}}</span>
         </v-card-title>
         <v-card-text>
           <v-container>
             <v-row>
-              <v-text-field label="กรุณากรอก Code" required
+              <v-text-field label="กรุณากรอก Code" required v-model="CodeInput"
               :rules="[
                       (v) => !!v || 'Code จะต้องไม่เป็นช่องว่าง',
                       (v) =>
