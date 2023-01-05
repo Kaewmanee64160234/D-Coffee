@@ -2,6 +2,8 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useMenuStore = defineStore('menu',()=>{
+    const dialogPromo1 = ref(false); 
+const dialogPromo2 = ref(false); 
     const add_on = ref([
         {name:'sugar 0 ',price:0},
         {name:'sugar 25 ',price:0},
@@ -28,4 +30,6 @@ const frameList = ref([
   ]);
   
     return {add_on,frameList}
+
+    return {add_on,dialogPromo1,dialogPromo2}
 })
