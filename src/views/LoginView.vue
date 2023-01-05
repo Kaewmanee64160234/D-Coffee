@@ -17,6 +17,7 @@ const login = async () => {
 const reset = () => {
     form.value?.reset();
 }
+
 </script>
 
 <template>
@@ -49,14 +50,14 @@ const reset = () => {
                         required
                         ></v-text-field>
                     </v-form>
-                    <pre>
-                        {{ loginName }}
-                        {{ password }}
-                    </pre>
+                    
                 </v-card-text>
                 <v-card-actions class="justify-center">
                     <v-btn color="success" @click="login">Login</v-btn>
-                    <v-btn color="error">Clear</v-btn>
+                    <v-btn color="error" @click="reset">Clear</v-btn>
+                </v-card-actions>
+                <v-card-actions>
+                    <v-btn></v-btn>
                 </v-card-actions>
                 </v-card>
         </v-main>

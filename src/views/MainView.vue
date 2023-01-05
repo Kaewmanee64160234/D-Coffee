@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue'
-
+  import { RouterView } from 'vue-router';
   const theme = ref('light')
 
   function onClick () {
