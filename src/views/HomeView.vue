@@ -55,7 +55,6 @@ const loginStore = useLoginStore();
           </td>
           <td class="menu-right">
         <tr class="list">
-         
           <h1><FindUser/></h1>
           <h1>list</h1>
           <h1>list</h1>
