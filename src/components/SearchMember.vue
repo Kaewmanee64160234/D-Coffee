@@ -23,7 +23,55 @@ const clear = () => {
           <span class="text-h5">Search Member</span>
         </v-card-title>
         <v-card-text>
-          
+          <v-container>
+            <v-row justify="space-between" class="text-center">
+              <v-col>
+                <v-btn variant="tonal">7</v-btn>
+              </v-col>
+
+              <v-col>
+                <v-btn variant="tonal">8</v-btn>
+              </v-col>
+
+              <v-col>
+                <v-btn variant="tonal">9</v-btn>
+              </v-col>
+            </v-row>
+
+            <v-row justify="space-between" class="text-center">
+              <v-col>
+                <v-btn variant="tonal">4</v-btn>
+              </v-col>
+
+              <v-col>
+                <v-btn variant="tonal">5</v-btn>
+              </v-col>
+
+              <v-col>
+                <v-btn variant="tonal">6</v-btn>
+              </v-col>
+            </v-row>
+
+            <v-row justify="space-between" class="text-center">
+              <v-col>
+                <v-btn variant="tonal">1</v-btn>
+              </v-col>
+
+              <v-col>
+                <v-btn variant="tonal">2</v-btn>
+              </v-col>
+
+              <v-col>
+                <v-btn variant="tonal">3</v-btn>
+              </v-col>
+            </v-row>
+
+            <v-row justify="space-between" class="text-center">
+              <v-col>
+                <v-btn variant="tonal">0</v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
