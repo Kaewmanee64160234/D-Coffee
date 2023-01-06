@@ -2,24 +2,18 @@
 <script setup lang="ts">
 import MainView from './views/MainView.vue';
 import LoginView from './views/LoginView.vue';
-import {ref,computed} from "vue";
-const loginName = ref("");
-const isLogin = computed(() => {
-  return loginName.value !== "";
+import {ref,computed, onMounted} from "vue";
+import {useLoginStore}  from "./stores/login";
+const loginStore= useLoginStore();
+onMounted(() => {
+  loginStore.loadData();
 });
-const login = (userName: string): void => {
-  loginName.value = userName;
-};
-
-const enter = (EnterName: string): void => {
-  loginName.value = EnterName;
-};
 </script>
 
 <template>
-  <LoginView v-if="!isLogin" @login="login"/>
-  <RouterView v-if="isLogin"/>
-  <ForgotPassView @enter="enter"/>
+  <LoginView v-if="!loginStore.isLogin" @login="loginStore.login"/>
+  <RouterView v-if="loginStore.isLogin"/>
+  <!-- <ForgotPassView @enter="loginStore.enter"/> -->
   
 
 </template>

@@ -2,6 +2,9 @@
 import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAccountCircle, mdiArchivePlus, mdiClipboardList, mdiAccountTie } from "@mdi/js"
 import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
+import { useLoginStore } from "@/stores/login";
+const loginStore = useLoginStore();
+
 
 </script>
 
@@ -9,8 +12,8 @@ import AddmemberDialog from "@/components/AddmemberDialog.vue";
   <v-app>
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" title="Sandra Adams"
-          subtitle="sandra_a88@gmailcom"></v-list-item>
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName"
+          :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
       </v-list>
 
       <v-divider></v-divider>
@@ -23,7 +26,7 @@ import AddmemberDialog from "@/components/AddmemberDialog.vue";
         <v-list-item :prepend-icon="mdiClipboardList" title="List" value="List"></v-list-item>
         <v-list-item :prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
         <v-list-item :prepend-icon="mdiAccountCircle" title="User" value="User"></v-list-item>
-        <v-list-item :prepend-icon="mdiLogoutVariant" title="Logout" value="Logout"></v-list-item>
+        <v-list-item :prepend-icon="mdiLogoutVariant" title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
       </v-list>
     </v-navigation-drawer>
     <main>

@@ -21,6 +21,14 @@ export const useLoginStore = defineStore("login", () => {
   const loadData = () => {
     loginName.value = localStorage.getItem("loginName") || "";
   };
+  
+  const findOne = ()=>{
+
+  }
+
+  const forgetPassword = ()=>{
+  
+  }
 
   return { loginName, isLogin, login, logout, loadData, dialog };
 });
