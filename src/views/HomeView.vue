@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js"
+import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js";
 
 </script>
 
