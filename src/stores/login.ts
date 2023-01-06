@@ -4,6 +4,7 @@ import type User from "./schema/User";
 
 export const useLoginStore = defineStore("login", () => {
   const dialog = ref(false);
+  const dialog2 = ref(false);
   const loginName = ref("");
   const tempPassword = ref("");
   const isLogin = computed(() => {
@@ -31,8 +32,21 @@ export const useLoginStore = defineStore("login", () => {
   const forgetPassword = (name:string)=>{
 
     const findUser = users.value.findIndex(user => user.name === name);
-     tempPassword.value =  users.value[findUser].password
+    if(findUser !== -1){
+      tempPassword.value =  users.value[findUser].password
+      dialog.value = false;
+      dialog2.value = true;
+      console.log(tempPassword.value)
+
+    }
+    else{
+      tempPassword.value  = "";
+      dialog2.value = false;
+      console.log("error user not found")
+
+    }
   }
 
-  return { loginName, isLogin, login, logout, loadData, dialog,users,tempPassword,forgetPassword };
+
+  return { loginName, isLogin, login, logout, loadData,dialog2, dialog,users,tempPassword,forgetPassword };
 });
