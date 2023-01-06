@@ -1,12 +1,28 @@
 
 <script setup lang="ts">
-//import HomeView from './views/HomeView.vue';
+import MainView from './views/MainView.vue';
+import LoginView from './views/LoginView.vue';
+import {ref,computed} from "vue";
+const loginName = ref("");
+const isLogin = computed(() => {
+  return loginName.value !== "";
+});
+const login = (userName: string): void => {
+  loginName.value = userName;
+};
+
+const enter = (EnterName: string): void => {
+  loginName.value = EnterName;
+};
 </script>
 
 <template>
+  <LoginView v-if="!isLogin" @login="login"/>
+  <RouterView v-if="isLogin"/>
+  <ForgotPassView @enter="enter"/>
   
-  <div>
-    <RouterView/>
-  </div>
+
 </template>
+
+
 
