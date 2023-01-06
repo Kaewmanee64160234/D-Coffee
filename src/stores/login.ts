@@ -5,6 +5,7 @@ import type User from "./schema/User";
 export const useLoginStore = defineStore("login", () => {
   const dialog = ref(false);
   const loginName = ref("");
+  const tempPassword = ref("");
   const isLogin = computed(() => {
     //loginName is not empty
     return loginName.value !== "";
@@ -26,13 +27,12 @@ export const useLoginStore = defineStore("login", () => {
     loginName.value = localStorage.getItem("loginName") || "";
   };
   
-  const findOne = ()=>{
 
+  const forgetPassword = (name:string)=>{
+
+    const findUser = users.value.findIndex(user => user.name === name);
+     tempPassword.value =  users.value[findUser].password
   }
 
-  const forgetPassword = ()=>{
-  
-  }
-
-  return { loginName, isLogin, login, logout, loadData, dialog };
+  return { loginName, isLogin, login, logout, loadData, dialog,users,tempPassword,forgetPassword };
 });

@@ -13,7 +13,6 @@ onMounted(() => {
 <template>
   <LoginView v-if="!loginStore.isLogin" @login="loginStore.login"/>
   <RouterView v-if="loginStore.isLogin"/>
-  <!-- <ForgotPassView @enter="loginStore.enter"/> -->
   
 
 </template>
