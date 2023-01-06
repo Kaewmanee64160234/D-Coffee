@@ -4,7 +4,6 @@ import { defineStore } from "pinia";
 
 export const useMemberStore = defineStore("member", () => {
   const dialog = ref(false);
-  const editDialog = ref(false);
   const lastMember = 5;
   const members = ref([
     {name: "Paradon", Tel: "0922248886",Point: 20 },
@@ -14,6 +13,6 @@ export const useMemberStore = defineStore("member", () => {
   ]);
   
   return {
-    members, dialog, editDialog
+    members, dialog,
   };
 });
