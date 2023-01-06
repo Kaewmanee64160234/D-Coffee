@@ -10,6 +10,9 @@ const save = async () => {
     loginStore.dialog = false;
   }
 };
+const clear = () => {
+  loginStore.dialog = false;
+};
 </script>
 
 <template>
