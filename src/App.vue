@@ -2,24 +2,21 @@
 <script setup lang="ts">
 import MainView from './views/MainView.vue';
 import LoginView from './views/LoginView.vue';
-import {ref,computed} from "vue";
-const loginName = ref("");
-const isLogin = computed(() => {
-  return loginName.value !== "";
-});
-const login = (userName: string): void => {
-  loginName.value = userName;
-};
+import {ref,computed, onMounted} from "vue";
+import MessageBox from '@/components/MessageBox.vue';
 
-const enter = (EnterName: string): void => {
-  loginName.value = EnterName;
-};
+import {useLoginStore}  from "./stores/login";
+const loginStore= useLoginStore();
+onMounted(() => {
+  loginStore.loadData();
+});
 </script>
 
 <template>
-  <LoginView v-if="!isLogin" @login="login"/>
-  <MainView v-if="isLogin"/>
-  <ForgotPassView @enter="enter"/>
+  <LoginView v-if="!loginStore.isLogin" @login="loginStore.login"/>
+  <RouterView v-if="loginStore.isLogin"/>
+  <MessageBox/>
+
 </template>
 
 
