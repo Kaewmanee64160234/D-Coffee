@@ -2,6 +2,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 export const useLoginStore = defineStore("login", () => {
+  
   const loginName = ref("");
   const isLogin = computed(() => {
     //loginName is not empty
