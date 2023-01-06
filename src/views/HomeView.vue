@@ -7,6 +7,10 @@ import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAcc
 import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
+import MenuCard from "@/components/MenuCard.vue";
+import { useMenuStore } from "@/stores/menu";
+const menuStore = useMenuStore();
+const framList = menuStore.frameList;
 const loginStore = useLoginStore();
 
 </script>
@@ -16,12 +20,12 @@ const loginStore = useLoginStore();
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
         <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName"
-          :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
+          :subtitle="loginStore.loginName + `@gmail.com`"></v-list-item>
       </v-list>
 
       <v-divider></v-divider>
 
-      <v-list  density="compact" nav>
+      <v-list density="compact" nav>
         <v-list-item prepend-icon="mdiHome " title="Main Menu" value="myfiles"></v-list-item>
         <v-list-item prepend-icon="mdiBasketOutline" title="Point of Sale" value="point of sale"></v-list-item>
         <v-list-item prepend-icon="mdiArchivePlus " title="stock" value="stock"></v-list-item>
@@ -30,7 +34,7 @@ const loginStore = useLoginStore();
         <v-list-item prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
         <v-list-item prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
         <v-list-item prepend-icon="mdiLogoutVariant " title="Logout" value="Logout"></v-list-item>
-    
+
       </v-list>
     </v-navigation-drawer>
     <main>
@@ -44,7 +48,9 @@ const loginStore = useLoginStore();
         </tr>
         <tr class="contain-main-page">
           <td class="menu-left">
-            <h1>Menu</h1>
+            <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
+              <MenuCard :name="item.name" :cost="item.cost" type="" :img="item.img"></MenuCard>
+            </div>
 
           </td>
           <td class="menu-right">
