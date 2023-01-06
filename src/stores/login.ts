@@ -2,7 +2,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 export const useLoginStore = defineStore("login", () => {
-  
+  const dialog = ref(false);
   const loginName = ref("");
   const isLogin = computed(() => {
     //loginName is not empty
@@ -22,5 +22,5 @@ export const useLoginStore = defineStore("login", () => {
     loginName.value = localStorage.getItem("loginName") || "";
   };
 
-  return { loginName, isLogin, login, logout, loadData };
+  return { loginName, isLogin, login, logout, loadData, dialog };
 });
