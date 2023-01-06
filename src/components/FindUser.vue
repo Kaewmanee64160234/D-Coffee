@@ -6,6 +6,12 @@ const memberStore = useMemberStore();
 const dialog = ref(false);
 const dialog2 = ref(false);
 const phonInput = ref("");
+const close  = ()=>{
+  dialog.value = false;
+  phonInput.value = "";
+  memberStore.IsSerarch = false;
+
+}
 </script>
 
 <template>
@@ -15,7 +21,7 @@ const phonInput = ref("");
         class="ma-2"
         @click="dialog = true"
       >
-        Open Dialog 1
+        Find Member
       </v-btn>
         <v-dialog
         v-model="dialog"  width="50%"
@@ -44,12 +50,11 @@ const phonInput = ref("");
         style="margin-top: 10px;"
       >
       <v-list lines="two" v-if="!memberStore.IsSerarch">
-        <v-list-item  v-for="member in memberStore.members" :value="member.name" :key="member.name" :title="member.name"  style="font-size: 15px;">{{ member.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;">Add Point</v-btn></v-list-item>
-        <!-- v-if="member.Tel === memberStore.thisMember" -->
+        <v-list-item  v-for="member in memberStore.members" :value="member.id" :key="member.name" :title="member.name"  style="font-size: 15px;">{{ member.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;" @click="memberStore.AddPoint(member.Tel)">Add Point</v-btn></v-list-item>
     </v-list>
     <v-list lines="two" v-if="memberStore.IsSerarch">
         
-        <v-list-item  :value="memberStore.thisMember.Point" :title="memberStore.thisMember.name"  style="font-size: 15px;">{{memberStore.thisMember.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;">Add Point</v-btn></v-list-item>
+        <v-list-item  :value="memberStore.thisMember.id" :title="memberStore.thisMember.name"  style="font-size: 15px;">{{memberStore.thisMember.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;">Add Point</v-btn></v-list-item>
         
     </v-list>
 </v-card>
@@ -65,7 +70,7 @@ const phonInput = ref("");
             <v-btn
               color="primary"
               variant="text"
-              @click="dialog = false"
+              @click="close"
             >
               Close
             </v-btn>

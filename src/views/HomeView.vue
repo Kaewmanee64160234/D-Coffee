@@ -47,6 +47,7 @@ const loginStore = useLoginStore();
           <td colspan="2">
             <h1>POint of sale</h1>
 
+
           </td>
         </tr>
         <tr class="contain-main-page">
@@ -64,6 +65,7 @@ const loginStore = useLoginStore();
         </tr>
         <tr class="cal-member">
           <td class="cal">
+
             <h1>Cal</h1>
             <h1>Cal</h1>
             <h1>Cal</h1>
@@ -79,8 +81,8 @@ const loginStore = useLoginStore();
           <td colspan="2">
             <div>
               <PromotionDialog />
-              <AddmemberDialog />
-              <v-btn>Menu</v-btn>
+            <FindUser/>
+            <AddmemberDialog />
               <v-btn>Menu</v-btn>
             </div>
 
