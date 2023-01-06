@@ -7,6 +7,7 @@ import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAcc
 import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
+import MenuLayout from "@/components/MenuLayout.vue";
 const loginStore = useLoginStore();
 
 </script>
@@ -49,7 +50,7 @@ const loginStore = useLoginStore();
           </td>
           <td class="menu-right">
         <tr class="list">
-          <h1>list</h1>
+          <h1><MenuLayout/></h1>
           <h1>list</h1>
           <h1>list</h1>
 
