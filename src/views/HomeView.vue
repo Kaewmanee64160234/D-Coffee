@@ -1,8 +1,4 @@
 <script setup lang="ts">
-
-// import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js";
-
-
 import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAccountCircle, mdiArchivePlus, mdiClipboardList, mdiAccountTie } from "@mdi/js"
 import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
@@ -19,22 +15,26 @@ const loginStore = useLoginStore();
   <v-app>
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName"
-          :subtitle="loginStore.loginName + `@gmail.com`"></v-list-item>
+
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+loginStore.position+`)`"
+          :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
+
       </v-list>
 
       <v-divider></v-divider>
 
-      <v-list density="compact" nav>
-        <v-list-item prepend-icon="mdiHome " title="Main Menu" value="myfiles"></v-list-item>
-        <v-list-item prepend-icon="mdiBasketOutline" title="Point of Sale" value="point of sale"></v-list-item>
-        <v-list-item prepend-icon="mdiArchivePlus " title="stock" value="stock"></v-list-item>
-        <v-list-item prepend-icon="mdiAccountMultiple" title="Customer" value="Customer"></v-list-item>
-        <v-list-item prepend-icon="mdiClipboardList " title="List" value="List"></v-list-item>
-        <v-list-item prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
-        <v-list-item prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
-        <v-list-item prepend-icon="mdiLogoutVariant " title="Logout" value="Logout"></v-list-item>
 
+      <v-list  density="compact" nav>
+        <v-list-item :prepend-icon="mdiHome " title="Main Menu" value="myfiles"></v-list-item>
+        <v-list-item :prepend-icon="mdiBasketOutline" title="Point of Sale" value="point of sale"></v-list-item>
+        <v-list-item :prepend-icon="mdiArchivePlus " title="stock" value="stock"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountMultiple" title="Customer" value="Customer"></v-list-item>
+        <v-list-item :prepend-icon="mdiClipboardList " title="List" value="List"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
+        <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
+    
+>>>>>>> 6c661e72e5338d6f8f4b5c3d2d7430a4e97f91d8
       </v-list>
     </v-navigation-drawer>
     <main>
