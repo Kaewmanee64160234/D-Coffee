@@ -18,13 +18,28 @@ const loginStore = useLoginStore();
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="First name*" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
                 <v-text-field
-                  label="Last name"
-                  hint="example of helper text only on focus"
-                ></v-text-field>
+                    label="First name*"
+                    :rules="[
+                      (v) => !!v || 'First name ต้องไม่เป็นช่องว่าง',
+                      (v) =>
+                        v.length >= 4 ||
+                        'Name must be more than or equal 4 characters',
+                    ]"
+                    required
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="6" md="4">
+                  <v-text-field
+                    label="Last name*"
+                    :rules="[
+                      (v) => !!v || 'Last name ต้องไม่เป็นช่องว่าง',
+                      (v) =>
+                        v.length >= 4 ||
+                        'Name must be more than or equal 4 characters',
+                    ]"
+                    required
+                  ></v-text-field>
               </v-col>
             </v-row>
           </v-container>
