@@ -54,7 +54,7 @@ const close  = ()=>{
     </v-list>
     <v-list lines="two" v-if="memberStore.IsSerarch">
         
-        <v-list-item  :value="memberStore.thisMember.id" :title="memberStore.thisMember.name"  style="font-size: 15px;">{{memberStore.thisMember.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;">Add Point</v-btn></v-list-item>
+        <v-list-item  :value="memberStore.thisMember.id" :title="memberStore.thisMember.name"  style="font-size: 15px;">{{memberStore.thisMember.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;" @click="memberStore.AddPoint(memberStore.thisMember.Tel)" >Add Point</v-btn></v-list-item>
         
     </v-list>
 </v-card>
