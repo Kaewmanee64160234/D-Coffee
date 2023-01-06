@@ -12,6 +12,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    required: true,
+  }
 });
 </script>
 

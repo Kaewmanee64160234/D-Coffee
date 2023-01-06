@@ -1,13 +1,12 @@
 <script setup lang="ts">
-
-// import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js";
-
-
 import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAccountCircle, mdiArchivePlus, mdiClipboardList, mdiAccountTie } from "@mdi/js"
 import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
-import MenuLayout from "@/components/MenuLayout.vue";
+import MenuCard from "@/components/MenuCard.vue";
+import { useMenuStore } from "@/stores/menu";
+const menuStore = useMenuStore();
+const framList = menuStore.frameList;
 const loginStore = useLoginStore();
 
 </script>
@@ -16,22 +15,26 @@ const loginStore = useLoginStore();
   <v-app>
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName"
+
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+loginStore.position+`)`"
           :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
+
       </v-list>
 
       <v-divider></v-divider>
 
+
       <v-list  density="compact" nav>
-        <v-list-item prepend-icon="mdiHome " title="Main Menu" value="myfiles"></v-list-item>
-        <v-list-item prepend-icon="mdiBasketOutline" title="Point of Sale" value="point of sale"></v-list-item>
-        <v-list-item prepend-icon="mdiArchivePlus " title="stock" value="stock"></v-list-item>
-        <v-list-item prepend-icon="mdiAccountMultiple" title="Customer" value="Customer"></v-list-item>
-        <v-list-item prepend-icon="mdiClipboardList " title="List" value="List"></v-list-item>
-        <v-list-item prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
-        <v-list-item prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
-        <v-list-item prepend-icon="mdiLogoutVariant " title="Logout" value="Logout"></v-list-item>
+        <v-list-item :prepend-icon="mdiHome " title="Main Menu" value="myfiles"></v-list-item>
+        <v-list-item :prepend-icon="mdiBasketOutline" title="Point of Sale" value="point of sale"></v-list-item>
+        <v-list-item :prepend-icon="mdiArchivePlus " title="stock" value="stock"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountMultiple" title="Customer" value="Customer"></v-list-item>
+        <v-list-item :prepend-icon="mdiClipboardList " title="List" value="List"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
+        <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
     
+>>>>>>> 6c661e72e5338d6f8f4b5c3d2d7430a4e97f91d8
       </v-list>
     </v-navigation-drawer>
     <main>
@@ -45,12 +48,14 @@ const loginStore = useLoginStore();
         </tr>
         <tr class="contain-main-page">
           <td class="menu-left">
-            <h1>Menu</h1>
+            <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
+              <MenuCard :name="item.name" :cost="item.cost" type="" :img="item.img"></MenuCard>
+            </div>
 
           </td>
           <td class="menu-right">
         <tr class="list">
-          <h1><MenuLayout/></h1>
+          <h1>list</h1>
           <h1>list</h1>
           <h1>list</h1>
 
