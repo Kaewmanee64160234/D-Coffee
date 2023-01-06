@@ -31,5 +31,6 @@ msgStore.showMessage("Not found member " + number);
   
   return {
     members, dialog,thisMember,findPhoneNmber,IsSerarch
+
   };
 });

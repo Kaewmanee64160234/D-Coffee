@@ -348,4 +348,6 @@ export const useMenuStore = defineStore("menu", () => {
 
   ]);
   return { add_ons, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode};
+
 });
+

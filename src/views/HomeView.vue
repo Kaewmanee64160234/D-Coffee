@@ -6,6 +6,9 @@ import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
 import { useMenuStore } from "@/stores/menu";
 import FindUser from "@/components/FindUser.vue";
+
+import ListComponent from "@/components/ListComponent.vue";
+
 const menuStore = useMenuStore();
 const framList = menuStore.frameList;
 const loginStore = useLoginStore();
@@ -55,9 +58,8 @@ const loginStore = useLoginStore();
           </td>
           <td class="menu-right">
         <tr class="list">
-          <h1><FindUser/></h1>
-          <h1>list</h1>
-          <h1>list</h1>
+
+          <ListComponent/>
 
         </tr>
         <tr class="cal-member">
