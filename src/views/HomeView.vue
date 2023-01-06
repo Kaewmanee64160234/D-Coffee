@@ -13,7 +13,7 @@ const loginStore = useLoginStore();
   <v-app>
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName"
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+loginStore.position+`)`"
           :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
       </v-list>
 
