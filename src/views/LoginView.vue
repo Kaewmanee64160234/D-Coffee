@@ -23,6 +23,7 @@ const reset = () => {
 <template>
     <v-app>
         <v-main class="bg-blue-grey-darken-2 pa-16">
+
             <v-card width="400px" class="mx-auto">
                 <v-card-title primary-title class="text-center text-h6 font-weight-bold"> Login </v-card-title>
                 <v-card-text>

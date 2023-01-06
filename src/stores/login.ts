@@ -1,12 +1,13 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import type User from "./schema/User";
-
+import {useMessageStore} from './message'
 export const useLoginStore = defineStore("login", () => {
   const dialog = ref(false);
   const dialog2 = ref(false);
   const loginName = ref("");
   const tempPassword = ref("");
+  const msgStore = useMessageStore();
   const isLogin = computed(() => {
     //loginName is not empty
     return loginName.value !== "";
@@ -36,13 +37,17 @@ export const useLoginStore = defineStore("login", () => {
       tempPassword.value =  users.value[findUser].password
       dialog.value = false;
       dialog2.value = true;
-      console.log(tempPassword.value)
+      msgStore.message = "";
+
+      // console.log(tempPassword.value)
 
     }
     else{
       tempPassword.value  = "";
       dialog.value = false;
-      console.log("error user not found")
+      msgStore.showMessage("Not found Your name in DB");
+      
+      // console.log("error user not found")
 
     }
   }

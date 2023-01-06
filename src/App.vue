@@ -3,6 +3,8 @@
 import MainView from './views/MainView.vue';
 import LoginView from './views/LoginView.vue';
 import {ref,computed, onMounted} from "vue";
+import MessageBox from '@/components/MessageBox.vue';
+
 import {useLoginStore}  from "./stores/login";
 const loginStore= useLoginStore();
 onMounted(() => {
@@ -13,7 +15,7 @@ onMounted(() => {
 <template>
   <LoginView v-if="!loginStore.isLogin" @login="loginStore.login"/>
   <RouterView v-if="loginStore.isLogin"/>
-  
+  <MessageBox/>
 
 </template>
 
