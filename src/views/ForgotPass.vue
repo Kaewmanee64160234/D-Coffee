@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useLoginStore } from "@/stores/login";
+import type { VForm } from "vuetify/components";
 const loginStore = useLoginStore();
+const form = ref<VForm | null>(null);
+const save = async () => {
+  const { valid } = await form.value!.validate();
+  if (valid) {
+    loginStore.dialog = false;
+  }
+};
 </script>
 
 <template>
@@ -50,14 +58,14 @@ const loginStore = useLoginStore();
           <v-btn
             color="blue-darken-1"
             variant="text"
-            @click="loginStore.dialog = false"
+            @click="clear"
           >
             Close
           </v-btn>
           <v-btn
             color="blue-darken-1"
             variant="text"
-            @click="loginStore.dialog = false"
+            @click="save"
           >
             Save
           </v-btn>
