@@ -41,7 +41,7 @@ export const useLoginStore = defineStore("login", () => {
     }
     else{
       tempPassword.value  = "";
-      dialog2.value = false;
+      dialog.value = false;
       console.log("error user not found")
 
     }
