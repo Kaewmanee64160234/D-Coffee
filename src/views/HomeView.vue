@@ -1,13 +1,22 @@
 <script setup lang="ts">
+
 // import { mdiHome  ,mdiAccountMultiple ,mdiBasketOutline,mdiLogoutVariant  ,mdiAccountCircle ,mdiArchivePlus ,mdiClipboardList ,mdiAccountTie } from  "@mdi/js";
+
+
+import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAccountCircle, mdiArchivePlus, mdiClipboardList, mdiAccountTie } from "@mdi/js"
+import PromotionDialog from '@/components/PromotionDialog.vue';
+import AddmemberDialog from "@/components/AddmemberDialog.vue";
+import { useLoginStore } from "@/stores/login";
+const loginStore = useLoginStore();
+
 </script>
 
 <template>
   <v-app>
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" title="Sandra Adams"
-          subtitle="sandra_a88@gmailcom"></v-list-item>
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName"
+          :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
       </v-list>
 
       <v-divider></v-divider>
@@ -21,9 +30,10 @@
         <v-list-item prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
         <v-list-item prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
         <v-list-item prepend-icon="mdiLogoutVariant " title="Logout" value="Logout"></v-list-item>
+    
       </v-list>
     </v-navigation-drawer>
-    <main >
+    <main>
 
       <table class="layout">
         <tr class="title-page">
@@ -58,11 +68,16 @@
           </td>
         </tr>
         <tr class="group-button">
+          <td colspan="2">
+            <div>
+              <PromotionDialog />
+              <AddmemberDialog />
+              <v-btn>Menu</v-btn>
+              <v-btn>Menu</v-btn>
+            </div>
 
-          <v-btn>Menu</v-btn>
-          <v-btn>Menu</v-btn>
-          <v-btn>Menu</v-btn>
-          <v-btn>Menu</v-btn>
+          </td>
+
         </tr>
         </td>
         </tr>
@@ -77,6 +92,7 @@
   height: 100vh;
   width: 100%;
   margin-left: 4vw;
+  max-width: 1440px;
 }
 
 tr,
@@ -86,12 +102,12 @@ td {
 }
 
 .title-page {
-  height: 15%;
+  height: 20%;
   background-color: rgba(170, 113, 72, 0.5);
 }
 
 .contain-main-page {
-  height: 70%;
+  height: 80%;
 }
 
 .menu-right,
@@ -102,22 +118,28 @@ td {
 
 .list {
   height: 50%;
+  width: 100%;
 }
 
 .cal-member {
-  height: 50%;
+  height: 70%;
+  width: 100vw;
+
 }
 
 .cal {
-  width: 60%;
+  width: 100%;
 }
 
 .find-member {
   width: 30%;
+  width: 100vw;
+
 
 }
 
 .group-button {
+
   height: 20%;
 }
 </style>
