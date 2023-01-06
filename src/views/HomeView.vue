@@ -1,11 +1,9 @@
 <script setup lang="ts">
-
 import { mdiHome, mdiAccountMultiple, mdiBasketOutline, mdiLogoutVariant, mdiAccountCircle, mdiArchivePlus, mdiClipboardList, mdiAccountTie } from "@mdi/js"
 import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
 const loginStore = useLoginStore();
-
 
 </script>
 
@@ -19,15 +17,16 @@ const loginStore = useLoginStore();
 
       <v-divider></v-divider>
 
-      <v-list density="compact" nav>
-        <v-list-item :prepend-icon="mdiHome" title="Main Menu" value="myfiles"></v-list-item>
+      <v-list  density="compact" nav>
+        <v-list-item :prepend-icon="mdiHome " title="Main Menu" value="myfiles"></v-list-item>
         <v-list-item :prepend-icon="mdiBasketOutline" title="Point of Sale" value="point of sale"></v-list-item>
-        <v-list-item :prepend-icon="mdiArchivePlus" title="stock" value="stock"></v-list-item>
+        <v-list-item :prepend-icon="mdiArchivePlus " title="stock" value="stock"></v-list-item>
         <v-list-item :prepend-icon="mdiAccountMultiple" title="Customer" value="Customer"></v-list-item>
-        <v-list-item :prepend-icon="mdiClipboardList" title="List" value="List"></v-list-item>
+        <v-list-item :prepend-icon="mdiClipboardList " title="List" value="List"></v-list-item>
         <v-list-item :prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
-        <v-list-item :prepend-icon="mdiAccountCircle" title="User" value="User"></v-list-item>
-        <v-list-item :prepend-icon="mdiLogoutVariant" title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
+        <v-list-item :prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
+        <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
+    
       </v-list>
     </v-navigation-drawer>
     <main>
