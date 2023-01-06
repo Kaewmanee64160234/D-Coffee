@@ -15,12 +15,16 @@ const props = defineProps({
   type: {
     type: String,
     required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
   }
 });
 </script>
 
 <template>
-  <a href="#" onclick="alert('Hello')">
+  <a href="#" onclick="alert(addToCard)">
   <div class="card item-card">
   <img 
   class="card-img-top item-img"

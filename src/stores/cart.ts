@@ -1,12 +1,12 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { makeOptional } from '@/__VLS_types'
 
 export const useCartStore = defineStore('cart', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+  const addToCard = (name:string,cost:string) => {
+    return name+" "+cost;
+    
 
-  return {  }
+  }
+  return { addToCard }
 })

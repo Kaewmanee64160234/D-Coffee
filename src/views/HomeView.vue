@@ -5,6 +5,8 @@ import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
 import { useMenuStore } from "@/stores/menu";
+import {useCartStore } from "@/stores/cart"
+const cartStore = useCartStore();
 const menuStore = useMenuStore();
 const framList = menuStore.frameList;
 const loginStore = useLoginStore();
@@ -34,7 +36,6 @@ const loginStore = useLoginStore();
         <v-list-item :prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
         <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
     
->>>>>>> 6c661e72e5338d6f8f4b5c3d2d7430a4e97f91d8
       </v-list>
     </v-navigation-drawer>
     <main>
@@ -49,7 +50,7 @@ const loginStore = useLoginStore();
         <tr class="contain-main-page">
           <td class="menu-left">
             <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
-              <MenuCard :name="item.name" :cost="item.cost" type="" :img="item.img"></MenuCard>
+              <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"  @click="cartStore.addToCard(item.name,item.cost)"></MenuCard>
             </div>
 
           </td>
