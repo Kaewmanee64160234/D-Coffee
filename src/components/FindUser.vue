@@ -5,6 +5,7 @@ import { useMemberStore } from '@/stores/member';
 const memberStore = useMemberStore();
 const dialog = ref(false);
 const dialog2 = ref(false);
+const phonInput = ref("");
 </script>
 
 <template>
@@ -29,20 +30,27 @@ const dialog2 = ref(false);
             label="Phone Number"
            height="20px"
             hide-details="auto"
-            style="width: 300px;"
+            v-model="phonInput"
+           
 
           >
-          <template v-slot:prepend>
-          <v-icon :icon="mdiAccountSearch " />
+          <template v-slot:append>
+          <v-btn  variant="outlined"  color="secondary" style="margin-bottom: 10px;" @click="memberStore.findPhoneNmber(phonInput)">Find</v-btn>
           </template>
          
         </v-text-field>
         <v-card
         class="mx-auto"
-      
+        style="margin-top: 10px;"
       >
-      <v-list lines="two">
-        <v-list-item v-for="member in memberStore.members" :value="member.name" :key="member.name" :title="member.name"  :subtitle="member.Point +` Point`" ></v-list-item>
+      <v-list lines="two" v-if="!memberStore.IsSerarch">
+        <v-list-item  v-for="member in memberStore.members" :value="member.name" :key="member.name" :title="member.name"  style="font-size: 15px;">{{ member.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;">Add Point</v-btn></v-list-item>
+        <!-- v-if="member.Tel === memberStore.thisMember" -->
+    </v-list>
+    <v-list lines="two" v-if="memberStore.IsSerarch">
+        
+        <v-list-item  :value="memberStore.thisMember.Point" :title="memberStore.thisMember.name"  style="font-size: 15px;">{{memberStore.thisMember.Point }} Point<v-btn variant="tonal" color="secondary" style="width: 100px;margin-left: 450px;">Add Point</v-btn></v-list-item>
+        
     </v-list>
 </v-card>
             <!-- <v-btn

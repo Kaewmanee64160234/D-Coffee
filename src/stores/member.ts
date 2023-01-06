@@ -6,6 +6,7 @@ export const useMemberStore = defineStore("member", () => {
   const dialog = ref(false);
   const lastMember = 5;
   const thisMember = ref();
+  const IsSerarch = ref(false);
   const msgStore = useMessageStore();
   const members = ref([
     {name: "Paradon", Tel: "0922248886",Point: 20 },
@@ -17,15 +18,18 @@ export const useMemberStore = defineStore("member", () => {
   const findPhoneNmber = (number:string)=>{
     const member = members.value.findIndex(member => member.Tel === number);
     if(member!==-1){
+      IsSerarch.value = true;
       thisMember.value = members.value[member]
 
     }else{
 msgStore.showMessage("Not found member " + number);
+
+
     }
 
   }
   
   return {
-    members, dialog,thisMember
+    members, dialog,thisMember,findPhoneNmber,IsSerarch
   };
 });
