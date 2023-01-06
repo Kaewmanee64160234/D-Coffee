@@ -16,16 +16,17 @@ const props = defineProps({
 </script>
 
 <template>
-  <v-card class="mx-auto " variant="outlined" width="150">
-    <v-img :src="props.img"   max-height="150"
-  max-width="150" cover></v-img>
-    <v-card-item>
-      <div class="text-center">
-        <div class="text-h6 mb-1">{{ props.name }}</div>
+  <a href="#" onclick="alert('Hello')">
+  <div class="card item-card">
+  <img 
+  class="card-img-top item-img"
+        :src="props.img"
+        alt="Card image cap"
+      />
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ props.name }}</h5>
+        <p class="card-text">{{ props.cost }}</p>
       </div>
-      <div class="text-center">
-        <div class="text-h6 mb-1">{{ props.cost }}</div>
-      </div>
-    </v-card-item>
-  </v-card>
+    </div>
+</a>
 </template>
