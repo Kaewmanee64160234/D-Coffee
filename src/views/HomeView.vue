@@ -4,25 +4,49 @@ import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
-import { useMenuStore } from "@/stores/menu";
 import {useCartStore } from "@/stores/cart"
 import FindUser from "@/components/FindUser.vue";
 import ListComponent from "@/components/ListComponent.vue";
+import { ref } from "vue";
+import { useMenuStore } from "@/stores/menu";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
+const drawer  = ref(false);
 const menuStore = useMenuStore();
 const framList = menuStore.frameList;
-
 
 </script>
 
 <template>
   <v-app>
-    <v-navigation-drawer expand-on-hover rail permanent>
-      <v-list>
-
+    <v-app-bar
+    color="primary"
+    prominent
+  >
+    <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+ loginStore.position +`)`"
           :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
+
+    <v-toolbar-title>Point Of Sale</v-toolbar-title>
+
+    <v-spacer></v-spacer>
+
+    <v-btn variant="text" icon="mdi-magnify"></v-btn>
+
+    <v-btn variant="text" icon="mdi-filter"></v-btn>
+
+    <v-btn variant="text" icon="mdi-dots-vertical"></v-btn>
+  </v-app-bar>
+
+    <v-navigation-drawer  v-model="drawer" temporary location="left" permanent>
+      <v-list>
+      
+        
+        <v-list-item :prepend-avatar="loginStore.profile" :title="loginStore.loginName + ` (`+loginStore.position+`)`"
+          :subtitle="loginStore.loginName+`@gmail.com`">
+         
+         
+        </v-list-item>
 
       </v-list>
 
@@ -102,7 +126,6 @@ const framList = menuStore.frameList;
 .layout {
   height: 100vh;
   width: 100%;
-  margin-left: 4vw;
   max-width: 1440px;
 }
 
