@@ -9,12 +9,12 @@ import FindUser from "@/components/FindUser.vue";
 import ListComponent from "@/components/ListComponent.vue";
 import { computed, onMounted, ref } from "vue";
 import { useMenuStore } from "@/stores/menu";
-import {useOrderStore} from "@/stores/order";
+import { useOrderStore } from "@/stores/order";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const drawer = ref(false);
 const menuStore = useMenuStore();
-const orderStore= useOrderStore();
+const orderStore = useOrderStore();
 // const framList = menuStore.frameList;
 
 onMounted(() => {
@@ -42,7 +42,8 @@ onMounted(() => {
       <v-list>
 
 
-        <v-list-item :prepend-avatar="loginStore.profile" :title="loginStore.loginName + ` (` + loginStore.position + `)`"
+        <v-list-item :prepend-avatar="loginStore.profile"
+          :title="loginStore.loginName + ` (` + loginStore.position + `)`"
           :subtitle="loginStore.loginName + `@gmail.com`">
 
 
@@ -78,7 +79,7 @@ onMounted(() => {
                   เครื่องดื่ม
                 </v-tab>
                 <v-tab @click="menuStore.menuFilter('food')">
-                 อาหาร
+                  อาหาร
                 </v-tab>
                 <v-tab @click="menuStore.menuFilter('snack')">
                   ของหวาน
@@ -128,27 +129,30 @@ onMounted(() => {
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ยอดที่ต้องชำระ :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.totalAndDicount }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ยอดรับชำระ :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.recive_mon }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">จำนวนเงินที่ทอน :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.change_money }} บาท</p>
                   </div>
                 </div>
-                
+
                 <div class="col-md-5">
                   <span class="fw-bold mt-2">ระบุจำนวนเงินที่ได้รับ</span>
-                  <input class="form-control" id="amount" type="text" placeholder="Amount" />
-                  <a class="btn btn-primary mt-2 btn-block">จ่ายด้วย PromptPay</a>
+                  <input class="form-control" id="amount" type="text" placeholder="Amount"
+                    v-model="orderStore.recive_mon" />
+                  <a class="btn btn-primary mt-2 btn-block" @click="orderStore.calMonAndDiscount">Calculate</a>
                 </div>
               </div>
 
             </div>
-            
+
+
+
 
           </div>
         </div>

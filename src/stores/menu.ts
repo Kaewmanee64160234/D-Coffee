@@ -8,18 +8,60 @@ export const useMenuStore = defineStore("menu", () => {
   const dicount = ref(0);
   const orderStore = useOrderStore();
   const promo = ref([
-   { id:1,name: "แฮปปี้รับแต้ม", price: 0, point: 50, code: "HAPPY250" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { id:2,name: "แลกคะแนนลดราคา", price: 10, point: 100, code: "Point10010" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { id:3,name: "ช้อปครบลดราคา", price: 5, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { id:4,name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { id:5,name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    { id:6,name: "DTAC Reward", price: 20, point: 0, code: "Shop1005" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
-    ]);
-  const checkCode = (idCode: number)=>{
-    const correctCode = promo.value.findIndex(code => code.id === idCode );
-     realCode.value =   promo.value[correctCode].code
-     dicount.value =   promo.value[correctCode].price;
-  }
+    {
+      id: 1,
+      name: "แฮปปี้รับแต้ม",
+      price: 0,
+      point: 50,
+      code: "HAPPY250",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png",
+    },
+    {
+      id: 2,
+      name: "แลกคะแนนลดราคา",
+      price: 10,
+      point: 100,
+      code: "Point10010",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png",
+    },
+    {
+      id: 3,
+      name: "ช้อปครบลดราคา",
+      price: 5,
+      point: 0,
+      code: "Shop1005",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png",
+    },
+    {
+      id: 4,
+      name: "DTAC Reward",
+      price: 20,
+      point: 0,
+      code: "Shop1005",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png",
+    },
+    {
+      id: 5,
+      name: "DTAC Reward",
+      price: 20,
+      point: 0,
+      code: "Shop1005",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png",
+    },
+    {
+      id: 6,
+      name: "DTAC Reward",
+      price: 20,
+      point: 0,
+      code: "Shop1005",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png",
+    },
+  ]);
+  const checkCode = (idCode: number) => {
+    const correctCode = promo.value.findIndex((code) => code.id === idCode);
+    realCode.value = promo.value[correctCode].code;
+    dicount.value = promo.value[correctCode].price;
+  };
   const realCode = ref("");
   const add_ons = ref([
     { name: "sugar 0 ", price: 0 },
@@ -157,7 +199,7 @@ export const useMenuStore = defineStore("menu", () => {
       price: 35,
       img: "https://i.pinimg.com/564x/2e/11/7d/2e117d0ebdd79649a9f31e294b9c28ef.jpg",
     },
-    
+
     {
       name: "แอปเปิ้ลโซดา",
       type: "drink",
@@ -369,7 +411,7 @@ export const useMenuStore = defineStore("menu", () => {
       price: 40,
       img: "https://i.pinimg.com/564x/f0/af/2c/f0af2c3be578ea8ec46ac0cc00045059.jpg",
     },
-  
+
     {
       name: "ข้าวผัดกิมจิ",
       type: "food",
@@ -384,18 +426,25 @@ export const useMenuStore = defineStore("menu", () => {
       price: 40,
       img: "https://i.pinimg.com/564x/c0/d4/9e/c0d49ebd6402929b95c825b76474d1f3.jpg",
     },
-   
-
   ]);
-   const menuFilter = (type:string)=>{
-    if(type===""){
+  const menuFilter = (type: string) => {
+    if (type === "") {
       type = "drink";
     }
-    const selectMenu = frameList.value.filter(menu => menu.type === type);
-    return menuSelected.value = selectMenu;
+    const selectMenu = frameList.value.filter((menu) => menu.type === type);
+    return (menuSelected.value = selectMenu);
+  };
 
-   }
-
-  return { add_ons, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode,menuFilter,menuSelected,dicount};
+  return {
+    add_ons,
+    dialogPromo1,
+    dialogPromo2,
+    frameList,
+    promo,
+    checkCode,
+    realCode,
+    menuFilter,
+    menuSelected,
+    dicount,
+  };
 });
-
