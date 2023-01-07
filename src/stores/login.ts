@@ -2,6 +2,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import type User from "./schema/User";
 import { useMessageStore } from "./message";
+
 export const useLoginStore = defineStore("login", () => {
   const dialog = ref(false);
   const dialog2 = ref(false);

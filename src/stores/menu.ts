@@ -48,6 +48,7 @@ export const useMenuStore = defineStore("menu", () => {
     { name: "bubble", price: 5 },
     { name: "Konjac jelly", price: 5 },
   ]);
+
   const frameList = ref([
     {
       name: "Americano",
@@ -398,5 +399,7 @@ export const useMenuStore = defineStore("menu", () => {
    
 
   ]);
+
   return { add_ons, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode};
 });
+
