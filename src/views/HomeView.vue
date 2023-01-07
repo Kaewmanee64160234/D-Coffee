@@ -7,23 +7,21 @@ import MenuCard from "@/components/MenuCard.vue";
 import { useCartStore } from "@/stores/cart";
 import FindUser from "@/components/FindUser.vue";
 import ListComponent from "@/components/ListComponent.vue";
-import { ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useMenuStore } from "@/stores/menu";
 import SearchMember from "@/components/SearchMember.vue";
 import { useEditStore } from "@/stores/edit";
+import { useOrderStore } from "@/stores/order";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const drawer = ref(false);
 const menuStore = useMenuStore();
-const framList = menuStore.frameList;
+const orderStore = useOrderStore();
+// const framList = menuStore.frameList;
 
-
-const editStore = useEditStore();
-const editedMenu = () => {
-  editStore.dialog1 = true;
-
-}
-
+onMounted(() => {
+  menuStore.menuFilter("drink");
+});
 </script>
 
 <template>
@@ -79,21 +77,21 @@ const editedMenu = () => {
           <div class="col-md-6 item-side">
             <div class="row-md-6">
               <v-tabs fixed-tabs background-color="indigo" dark>
-                <v-tab>
+                <v-tab @click="menuStore.menuFilter('drink')">
                   เครื่องดื่ม
                 </v-tab>
-                <v-tab>
+                <v-tab @click="menuStore.menuFilter('food')">
                   อาหาร
                 </v-tab>
-                <v-tab>
+                <v-tab @click="menuStore.menuFilter('snack')">
                   ของหวาน
                 </v-tab>
               </v-tabs>
             </div>
             <div class="row">
-              <div class="col-md-3 mb-2 mt-4" v-for="item in framList" :key="item.img">
+              <div class="col-md-3 mb-2 mt-4" v-for="item in menuStore.menuSelected" :key="item.img">
                 <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"
-                  @click="cartStore.addToCard(item)"></MenuCard>
+                  @click="cartStore.addToCard(item), orderStore.CaltotalPrice()"></MenuCard>
               </div>
             </div>
           </div>
@@ -125,37 +123,39 @@ const editedMenu = () => {
               <!-- </table> -->
             </div>
 
-            <div class="summary">
+            <div class="summary mt-2">
               <div class="row">
                 <div class="col-md-7">
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ราคารวม :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.total_ }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ส่วนลด :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.total_dicount }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ยอดที่ต้องชำระ :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.totalAndDicount }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ยอดรับชำระ :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.recive_mon }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">จำนวนเงินที่ทอน :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.change_money }} บาท</p>
                   </div>
                 </div>
 
                 <div class="col-md-5">
                   <span class="fw-bold mt-2">ระบุจำนวนเงินที่ได้รับ</span>
-                  <input class="form-control" id="amount" type="text" placeholder="Amount" />
-                  <a class="btn btn-primary mt-2 btn-block">จ่ายด้วย PromptPay</a>
+                  <input class="form-control" id="amount" type="text" placeholder="Amount"
+                    v-model="orderStore.recive_mon" />
+                  <a class="btn btn-primary mt-2 btn-block" @click="orderStore.calMonAndDiscount">Calculate</a>
                 </div>
               </div>
+
             </div>
 
             <div class="col-md-12 content-area">
@@ -170,10 +170,10 @@ const editedMenu = () => {
                 </div>
                 <div class="row-md-3">
                   <div class="col">
-                    <PromotionDialog></PromotionDialog>
+                    <v-btn>Save</v-btn>
                   </div>
                   <div class="col">
-                    <FindUser></FindUser>
+                    <v-btn>Clear</v-btn>
                   </div>
                 </div>
               </v-row>
