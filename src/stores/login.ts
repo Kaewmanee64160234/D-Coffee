@@ -8,6 +8,7 @@ export const useLoginStore = defineStore("login", () => {
   const loginName = ref("");
   const tempPassword = ref("");
   const position = ref("");
+  const profile = ref("");
   const msgStore = useMessageStore();
   const isLogin = computed(() => {
     //loginName is not empty
@@ -54,8 +55,10 @@ export const useLoginStore = defineStore("login", () => {
     }
     loginName.value = userName;
     position.value = users.value[findUser].login;
+    profile.value = users.value[findUser].profile;
     localStorage.setItem("loginName", userName);
     localStorage.setItem("position", position.value);
+    localStorage.setItem("profile",profile.value)
     return true;
   };
   const logout = () => {
@@ -99,6 +102,7 @@ export const useLoginStore = defineStore("login", () => {
     users,
     tempPassword,
     forgetPassword,
-    position
+    position,profile
+
   };
 });
