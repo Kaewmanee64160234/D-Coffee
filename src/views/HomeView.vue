@@ -24,10 +24,7 @@ const framList = menuStore.frameList;
     prominent
   >
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+ loginStore.position +`)`"
-          :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
-
-
+      
     <v-toolbar-title>Point Of Sale</v-toolbar-title>
 
     <v-spacer></v-spacer>
@@ -65,21 +62,6 @@ const framList = menuStore.frameList;
         <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
       </v-list>
     </v-navigation-drawer>
-
-
-
-
-      <v-app-bar absolute color="#6A76AB" dark shrink-on-scroll prominent fade-img-on-scroll
-        scroll-target="#scrolling-techniques-3">
-        <template v-slot:img="{ props }">
-          <v-img v-bind="props" gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"></v-img>
-        </template>
-
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-        <v-app-bar-title>Point of sell</v-app-bar-title>
-
-      </v-app-bar>
 
       <div class="content-area">
         <div class="sidebar"></div>
