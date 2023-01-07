@@ -12,11 +12,13 @@ import { useMenuStore } from "@/stores/menu";
 import SearchMember from "@/components/SearchMember.vue";
 import { useEditStore } from "@/stores/edit";
 import { useOrderStore } from "@/stores/order";
+import { useMemberStore } from "@/stores/member";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const drawer = ref(false);
 const menuStore = useMenuStore();
 const orderStore = useOrderStore();
+const memberStore = useMemberStore();
 // const framList = menuStore.frameList;
 
 onMounted(() => {

@@ -15,26 +15,21 @@ export const useMemberStore = defineStore("member", () => {
     { id: 4, name: "Marivan", Tel: "0854322211", Point: 6 },
   ]);
 
-  const findPhoneNmber = (number: string) => {
-    const member = members.value.findIndex((member) => member.Tel === number);
-    if (member !== -1) {
-      IsSerarch.value = true;
-      thisMember.value = members.value[member];
-    } else {
-      msgStore.showMessage("Not found member " + number);
-    }
-  };
   const AddPoint = (phone: string) => {
     const member = members.value.findIndex((member) => member.Tel === phone);
     members.value[member].Point += 5;
   };
 
+  const findMember = (phone:string)=>{
+     return members.value.filter(member=> member.Tel.includes(phone))
+  }
+
   return {
     members,
     dialog,
     thisMember,
-    findPhoneNmber,
     IsSerarch,
     AddPoint,
+    findMember
   };
 });
