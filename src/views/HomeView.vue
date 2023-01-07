@@ -6,6 +6,8 @@ import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
 import { useMenuStore } from "@/stores/menu";
 import {useCartStore } from "@/stores/cart"
+import FindUser from "@/components/FindUser.vue";
+import ListComponent from "@/components/ListComponent.vue";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const menuStore = useMenuStore();
@@ -46,6 +48,7 @@ const framList = menuStore.frameList;
           <td colspan="2">
             <h1>POint of sale</h1>
 
+
           </td>
         </tr>
         <tr class="contain-main-page">
@@ -59,9 +62,11 @@ const framList = menuStore.frameList;
           <h1  v-for="item in cartStore.carts" :key="item.name" >
       {{ item.name }} {{ item.cost }} 
           </h1>
+          <ListComponent/>
         </tr>
         <tr class="cal-member">
           <td class="cal">
+
             <h1>Cal</h1>
             <h1>Cal</h1>
             <h1>Cal</h1>
@@ -77,8 +82,8 @@ const framList = menuStore.frameList;
           <td colspan="2">
             <div>
               <PromotionDialog />
-              <AddmemberDialog />
-              <v-btn>Menu</v-btn>
+            <FindUser/>
+            <AddmemberDialog />
               <v-btn>Menu</v-btn>
             </div>
 
