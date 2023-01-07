@@ -4,16 +4,25 @@ import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
-import { useCartStore } from "@/stores/cart"
+import { useCartStore } from "@/stores/cart";
 import FindUser from "@/components/FindUser.vue";
 import ListComponent from "@/components/ListComponent.vue";
 import { ref } from "vue";
 import { useMenuStore } from "@/stores/menu";
+import SearchMember from "@/components/SearchMember.vue";
+import { useEditStore } from "@/stores/edit";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const drawer = ref(false);
 const menuStore = useMenuStore();
 const framList = menuStore.frameList;
+
+
+const editStore = useEditStore();
+const editedMenu = () => {
+  editStore.dialog1 = true;
+
+}
 
 </script>
 
@@ -37,7 +46,8 @@ const framList = menuStore.frameList;
       <v-list>
 
 
-        <v-list-item :prepend-avatar="loginStore.profile" :title="loginStore.loginName + ` (` + loginStore.position + `)`"
+        <v-list-item :prepend-avatar="loginStore.profile"
+          :title="loginStore.loginName + ` (` + loginStore.position + `)`"
           :subtitle="loginStore.loginName + `@gmail.com`">
 
 
@@ -73,7 +83,7 @@ const framList = menuStore.frameList;
                   เครื่องดื่ม
                 </v-tab>
                 <v-tab>
-                 อาหาร
+                  อาหาร
                 </v-tab>
                 <v-tab>
                   ของหวาน
@@ -90,24 +100,29 @@ const framList = menuStore.frameList;
 
           <div class="col-md-6 mt-2">
             <div class="table-responsive cart-table">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-center">รายการ</th>
-                    <th scope="col" class="text-center">ราคา</th>
-                    <th scope="col" class="text-center">จำนวน</th>
-                    <th scope="col" class="text-center">รวม</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="item in cartStore.carts" :key="item.name">
-                    <td>{{ item.name }}</td>
-                    <td class="text-center">{{ item.price }}</td>
-                    <td class="text-center">1</td>
-                    <td class="text-center">{{ item.price * 1 }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <ListComponent/>
+             <!-- <table class="table"> -->
+                <!-- <thead> -->
+                  <!-- <tr> -->
+                    <!-- <th scope="col" class="text-center">รายการ</th> -->
+                    <!-- <th scope="col" class="text-center">ราคา</th> -->
+                    <!-- <th scope="col" class="text-center">จำนวน</th> -->
+                    <!-- <th scope="col" class="text-center">รวม</th> -->
+                  <!-- </tr> -->
+                <!-- </thead> -->
+                <!-- <tbody> -->
+                  <!-- <tr v-for="item in cartStore.carts" :key="item.name"> -->
+                    <!-- <th scope="col"> -->
+                    <!-- <td>{{ item.name }}</td> -->
+                    <!-- <td scope="col" class="text-center">{{ item.price }}</td> -->
+                    <!-- <td class="text-center">1</td> -->
+                    <!-- <td class="text-center">{{ item.price * 1 }}</td> -->
+                    <!-- <td class="text-center"><v-btn color="error" style="margin-left: 30px;">ยกเลิก</v-btn></td> -->
+                    <!-- <td class="text-center"><v-btn color="secondary" style="margin-left: 10px;" -->
+                        <!-- @click="editedMenu">แก้ไข</v-btn> </td> -->
+                  <!-- </tr> -->
+                <!-- </tbody> -->
+              <!-- </table> -->
             </div>
 
             <div class="summary">
@@ -134,7 +149,7 @@ const framList = menuStore.frameList;
                     <p class="fw-bold mb-0">2261 บาท</p>
                   </div>
                 </div>
-                
+
                 <div class="col-md-5">
                   <span class="fw-bold mt-2">ระบุจำนวนเงินที่ได้รับ</span>
                   <input class="form-control" id="amount" type="text" placeholder="Amount" />
@@ -142,10 +157,33 @@ const framList = menuStore.frameList;
                 </div>
               </div>
             </div>
+
+            <div class="col-md-12 content-area">
+              <v-row align="center" justify="space-around">
+                <div class="row-md-3">
+                  <div class="col">
+                    <PromotionDialog></PromotionDialog>
+                  </div>
+                  <div class="col">
+                    <FindUser></FindUser>
+                  </div>
+                </div>
+                <div class="row-md-3">
+                  <div class="col">
+                    <PromotionDialog></PromotionDialog>
+                  </div>
+                  <div class="col">
+                    <FindUser></FindUser>
+                  </div>
+                </div>
+              </v-row>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+
 
   </v-app>
 

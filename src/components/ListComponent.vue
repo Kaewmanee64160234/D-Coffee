@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useEditStore } from "@/stores/edit"
+import { useCartStore } from "@/stores/cart";
 const editStore = useEditStore();
+const cartStore = useCartStore();
 const editedMenu = () => {
     editStore.dialog1 = true;
 
@@ -8,58 +10,30 @@ const editedMenu = () => {
 </script>
 <template>
     <v-alert color="white">
-        <v-table>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Late</td>
-                    <td>35</td>
-                    <td>1</td>
-                    <td>35</td>
-                    <td><v-btn color="error" style="margin-left: 50px;">ยกเลิก</v-btn><v-btn color="secondary"
-                            style="margin-left: 10px;" @click="editedMenu">แก้ไข</v-btn></td>
-                </tr>
-
-            </tbody>
-
-        </v-table>
-    </v-alert>
-    <br>
-    <v-alert color="white">
-        <v-table>
-            <tbody>
-                <tr>
-                    <td>2</td>
-                    <td>Coffee</td>
-                    <td>35</td>
-                    <td>1</td>
-                    <td>35</td>
-                    <td><v-btn color="error" style="margin-left: 30px;">ยกเลิก</v-btn><v-btn color="secondary"
-                            style="margin-left: 10px;" @click="editedMenu">แก้ไข</v-btn></td>
-                </tr>
-
-            </tbody>
-
-        </v-table>
-    </v-alert>
-    <br>
-
-    <v-alert color="white">
-        <v-table>
-            <tbody>
-                <tr>
-                    <td>3</td>
-                    <td>Milk Tea</td>
-                    <td>35</td>
-                    <td>1</td>
-                    <td>35</td>
-                    <td><v-btn color="error" style="margin-left: 30px;">ยกเลิก</v-btn><v-btn color="secondary"
-                            style="margin-left: 10px;">แก้ไข</v-btn></td>
-                </tr>
-
-            </tbody>
-
-        </v-table>
+        <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">รายการ</th>
+                    <th scope="col" class="text-center">ราคา</th>
+                    <th scope="col" class="text-center">จำนวน</th>
+                    <th scope="col" class="text-center">รวม</th>
+                    <th></th>
+                    <th></th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in cartStore.carts" :key="item.name">
+                    <td style="text-align: center;">{{ item.name }}</td>
+                    <td scope="col" class="text-center">{{ item.price }}</td>
+                    <td class="text-center">1</td>
+                    <td class="text-center">{{ item.price * 1 }}</td>
+                    <td class="text-center"><v-btn color="error" style="margin-left: 30px;">ยกเลิก</v-btn></td>
+                    <td class="text-center"><v-btn color="secondary" style="margin-left: 10px;"
+                        @click="editedMenu">แก้ไข</v-btn> </td>
+                  </tr>
+                </tbody>
+              </table>
     </v-alert>
     <div>
         <v-row justify="center">
