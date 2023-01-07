@@ -7,14 +7,19 @@ import MenuCard from "@/components/MenuCard.vue";
 import { useCartStore } from "@/stores/cart"
 import FindUser from "@/components/FindUser.vue";
 import ListComponent from "@/components/ListComponent.vue";
-import { ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useMenuStore } from "@/stores/menu";
+import {useOrderStore} from "@/stores/order";
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const drawer = ref(false);
 const menuStore = useMenuStore();
-const framList = menuStore.frameList;
+const orderStore= useOrderStore();
+// const framList = menuStore.frameList;
 
+onMounted(() => {
+  menuStore.menuFilter("drink");
+});
 </script>
 
 <template>
@@ -83,7 +88,7 @@ const framList = menuStore.frameList;
             <div class="row">
               <div class="col-md-3 mb-2 mt-4" v-for="item in menuStore.menuSelected" :key="item.img">
                 <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"
-                  @click="cartStore.addToCard(item)"></MenuCard>
+                  @click="cartStore.addToCard(item), orderStore.CaltotalPrice()"></MenuCard>
               </div>
             </div>
           </div>
@@ -115,11 +120,11 @@ const framList = menuStore.frameList;
                 <div class="col-md-7">
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ราคารวม :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.total_ }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ส่วนลด :</p>
-                    <p class="fw-bold mb-0">2261 บาท</p>
+                    <p class="fw-bold mb-0">{{ orderStore.total_dicount }} บาท</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="fw-bold mb-0">ยอดที่ต้องชำระ :</p>
@@ -141,7 +146,10 @@ const framList = menuStore.frameList;
                   <a class="btn btn-primary mt-2 btn-block">จ่ายด้วย PromptPay</a>
                 </div>
               </div>
+
             </div>
+            
+
           </div>
         </div>
       </div>

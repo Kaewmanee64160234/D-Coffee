@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useMenuStore } from "../stores/menu";
+import { useOrderStore } from "@/stores/order";
 const menuStore = useMenuStore();
+const orderStore = useOrderStore();
 const listPromotion = menuStore.promo;
 let namePromotion = ref("");
 let tempId = ref();
@@ -27,7 +29,7 @@ const finishCode = () => {
     menuStore.dialogPromo2 = false;
     tempId.value = "";
     CodeInput.value = "";
-
+      orderStore.CalDiscout(menuStore.dicount);
 
   }
   else{
