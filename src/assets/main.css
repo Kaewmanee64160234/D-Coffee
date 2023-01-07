@@ -32,16 +32,6 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+  
 }
 
-.item-card .item-img{
-  height: 120px !important;
-  object-fit: cover;
-}
-a .item-card{
-  cursor:pointer;
-  color: black !important;
-}
-a:hover .item-card{
-  text-decoration: none !important;;
-}

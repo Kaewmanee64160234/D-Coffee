@@ -33,22 +33,103 @@ const loginStore = useLoginStore();
         <v-list-item :prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
         <v-list-item :prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
         <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
-    
->>>>>>> 6c661e72e5338d6f8f4b5c3d2d7430a4e97f91d8
+  
       </v-list>
     </v-navigation-drawer>
+<!-- Topmenu bar -->
+<!-- <div class="container layout">
+  <div class="row">
+  <div class="header">Point of sell</div>
+  </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
+    <MenuCard
+      :name="item.name"
+      :cost="item.cost"
+      type=""
+      :img="item.img"
+    ></MenuCard>
+  </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <p>Summary</p>
+              <p>Summary</p>
+              <p>Summary</p>
+              <p>Summary</p>
+              <p>Summary</p>
+              <p>Summary</p>
+            </div>
+            <div class="col-md-4">
+              <p>Calculator zone</p>
+            </div>
+            <div class="col-md-12">
+              <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div> -->
+
+
     <main>
 
       <table class="layout">
         <tr class="title-page">
           <td colspan="2">
-            <h1>POint of sale</h1>
+            <h1>Point of sale</h1>
 
           </td>
         </tr>
         <tr class="contain-main-page">
           <td class="menu-left">
-            <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
+            <div class="col-md-4 mb-2 mt-4 sm-3 " v-for="item in framList" :key="item.img">
               <MenuCard :name="item.name" :cost="item.cost" type="" :img="item.img"></MenuCard>
             </div>
 
@@ -75,7 +156,7 @@ const loginStore = useLoginStore();
         </tr>
         <tr class="group-button">
           <td colspan="2">
-            <div>
+            <div class="col-md-12">
               <PromotionDialog />
               <AddmemberDialog />
               <v-btn>Menu</v-btn>
@@ -148,4 +229,7 @@ td {
 
   height: 20%;
 }
+
+
+
 </style>
