@@ -43,7 +43,7 @@ const props = defineProps({
   object-fit: cover;
 }
 a .item-card{
-  width: 120px !important;
+  /* width: 120px !important; */
   cursor:pointer;
   color: black !important;
 }

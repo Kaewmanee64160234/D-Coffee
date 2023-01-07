@@ -40,6 +40,7 @@ export const useMenuStore = defineStore("menu", () => {
     { name: "bubble", price: 5 },
     { name: "Konjac jelly", price: 5 },
   ]);
+
   const frameList = ref([
     {
       name: "1ชานม",
@@ -108,9 +109,9 @@ export const useMenuStore = defineStore("menu", () => {
       img: "https://i.pinimg.com/736x/86/7c/c0/867cc03586802e08b76789ac9d26fa41.jpg",
     },
     {
-      name: "12ซาลาเปาไส้ครีม",
-      type: "snack",
-      cost: "ราคา 35 บาท",
+      name: "12ชานม",
+      type: "food",
+      cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/736x/e1/3e/38/e13e38c0fda6757a5ee8ce40283d37cd.jpg",
     },
 
@@ -187,15 +188,15 @@ export const useMenuStore = defineStore("menu", () => {
       img: "https://i.pinimg.com/564x/ea/89/00/ea8900ab7034ee0357126b1c3f4ff05c.jpg",
     },
     {
-      name: "25Swiss roll",
+      name: "25เนื้อ",
       type: "snack",
-      cost: "ราคา 40 บาท",
+      cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/564x/e6/cd/e9/e6cde9e088ce25e692f970ad283c6414.jpg",
     },
     {
-      name: "26ทาการอง",
+      name: "26เนื้อ",
       type: "snack",
-      cost: "ราคา 60 บาท",
+      cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/564x/34/07/70/340770007b0cb242ffe7c5e4f35c861b.jpg",
     },
 
@@ -230,20 +231,20 @@ export const useMenuStore = defineStore("menu", () => {
       img: "https://i.pinimg.com/564x/02/3d/74/023d745e6cca9a4d56ddcaccc44eeee1.jpg",
     },
     {
-      name: "32Chocolate cake",
+      name: "32เนื้อ",
       type: "snack",
-      cost: "ราคา 40 บาท",
+      cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/736x/38/2a/af/382aaf9ec02139eff472d9b0e5aefeba.jpg",
     },
 
     {
-      name: "33Cup cake",
+      name: "33เนื้อ",
       type: "snack",
       cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/564x/e2/6b/0b/e26b0bf1c5e82b7359bcc2264cba6986.jpg",
     },
     {
-      name: "34Pudding Stawberry",
+      name: "34เนื้อ",
       type: "snack",
       cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/564x/40/4f/09/404f0998fc39d66208ed1afdfe4d1ed6.jpg",
@@ -261,7 +262,7 @@ export const useMenuStore = defineStore("menu", () => {
       img: "https://i.pinimg.com/564x/5b/fd/4c/5bfd4cb5ab79d55fe562616cb37c075d.jpg",
     },
     {
-      name: "37Croissant",
+      name: "37เนื้อ",
       type: "snack",
       cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/736x/f4/94/60/f49460cfe80a183fdd8a52ec3c4d8a4d.jpg",
@@ -292,9 +293,9 @@ export const useMenuStore = defineStore("menu", () => {
       img: "https://i.pinimg.com/564x/80/8c/74/808c74bd4ddcc19c68714c9f31675e68.jpg",
     },
     {
-      name: "42คุ้กกี้",
+      name: "42เนื้อ",
       type: "snack",
-      cost: "ราคา 30 บาท",
+      cost: "ราคา 10 บาท",
       img: "https://i.pinimg.com/736x/99/3b/dd/993bdd5119af769065a058a5030b14eb.jpg",
     },
     {
@@ -347,8 +348,6 @@ export const useMenuStore = defineStore("menu", () => {
     },
 
   ]);
-
-  return { add_on, frameList };
 
   return { add_ons, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode};
 });
