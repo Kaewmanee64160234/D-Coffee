@@ -55,13 +55,24 @@ const backToDi1 = () => {
         </v-card-title>
         <v-card-text>
           <v-container>
+            <v-card-actions style="margin-left: 90%;">
+              <v-btn color="error" variant="text" @click="close" >
+                Close
+              </v-btn>
+            </v-card-actions>
             <v-row>
-              <v-col v-for="item in listPromotion" :key="item.point">
-                <h3>{{item.name}}</h3>
+              <v-col v-for="item in listPromotion" :key="item.point" cols="12"
+              sm="4">
+              
+              <v-card  variant="outlined" class="ma-2 pa-2 card" @click="open2(item.name,item.id)" >
                 <v-img
-                  :src="item.img"></v-img>
-                  <v-btn color="black" variant="text" @click="open2(item.name,item.id)">code</v-btn>
-             
+                  :src="item.img" class="img-promo"></v-img>
+                  <!-- <v-btn color="black" variant="text" @click="open2(item.name,item.id)">code</v-btn> -->
+                  <v-card-title class="mt-5" style="font-size: 20px; text-align: center;">
+                    {{ item.name }}
+                  </v-card-title>
+                </v-card>
+              
                 </v-col>
              
             </v-row>
@@ -117,4 +128,14 @@ const backToDi1 = () => {
 </template>
 <style scoped>
 .promo2 { width: 50%;}
+.img-promo{
+  max-width: 200px;
+  max-height: 250px;
+  object-fit: cover;
+  text-align: center;
+
+}
+.card{
+  max-width:300px;
+}
 </style>
