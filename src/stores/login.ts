@@ -15,7 +15,7 @@ export const useLoginStore = defineStore("login", () => {
     //loginName is not empty
     return loginName.value !== "";
   });
-  const users = ref([
+  const users = ref<User[]>([
     {
       id: 1,
       name: "Kanwara",

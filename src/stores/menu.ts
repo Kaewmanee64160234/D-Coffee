@@ -86,6 +86,7 @@ export const useMenuStore = defineStore("menu", () => {
       cost: "ราคา 55 บาท",
       price: 55,
       img: "https://i.pinimg.com/564x/15/73/f2/1573f22afad0b6eb64074ab9dc89683f.jpg",
+    
     },
     {
       name: "Latte coffee",

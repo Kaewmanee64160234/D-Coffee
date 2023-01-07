@@ -1,6 +1,7 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useMessageStore } from "./message";
+import type Member from "./schema/member";
 
 export const useMemberStore = defineStore("member", () => {
   const dialog = ref(false);
@@ -8,7 +9,7 @@ export const useMemberStore = defineStore("member", () => {
   const thisMember = ref();
   const IsSerarch = ref(false);
   const msgStore = useMessageStore();
-  const members = ref([
+  const members = ref<Member[]>([
     { id: 1, name: "Paradon", Tel: "0922248886", Point: 20 },
     { id: 2, name: "Jontapon", Tel: "0877788942", Point: 4 },
     { id: 3, name: "Mango", Tel: "0815634478", Point: 5 },
