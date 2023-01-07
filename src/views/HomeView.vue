@@ -70,9 +70,35 @@ const framList = menuStore.frameList;
           <div class="row">
             <div class="col-md-6 item-side">
               <div class="row">
-                <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
-                  <MenuCard :name="item.name" :cost="item.cost" type="" :img="item.img"></MenuCard>
+                <div class="col-md-3 mb-2 mt-4" v-for="item in framList" :key="item.img">
+                  <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"  @click="cartStore.addToCard(item)"></MenuCard>
                 </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="table-responsive cart-table">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">รายการ</th>
+                      <th scope="col" class="text-center">ราคา</th>
+                      <th scope="col" class="text-center">จำนวน</th>
+                      <th scope="col" class="text-center">รวม</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in cartStore.carts" :key="item.name">
+                      <td>{{ item.name }}</td>
+                      <td class="text-center">{{ item.price }}</td>
+                      <td class="text-center">1</td>
+                      <td class="text-center">{{ item.price * 1 }}</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div class="summary">
+                
               </div>
             </div>
           </div>
@@ -83,8 +109,17 @@ const framList = menuStore.frameList;
 
 </template>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  font-family: "prompt", sans-serif;
+}
+.cart-table{
+  max-height: 300px;
+}
+
 .content-area{
-  margin-left: 70px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 70px;
 }
 .layout {
@@ -96,6 +131,20 @@ const framList = menuStore.frameList;
   max-height: 660px;
   overflow: scroll;
 }
+.item-side::-webkit-scrollbar,
+.cart-table::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+.item-side::-webkit-scrollbar-thumb,
+.cart-table::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 999px;
+}
+.item-side .row{
+  overflow: hidden;
+}
+
 tr,
 td {
   border: 1px solid rgb(211, 211, 211);

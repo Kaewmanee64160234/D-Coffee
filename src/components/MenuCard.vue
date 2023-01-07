@@ -44,8 +44,12 @@ const props = defineProps({
 </template>
 
 <style>
+.card-title{
+  font-size: 16px !important;
+  margin-bottom: 0;
+}
 .item-card .item-img{
-  height: 60% !important;
+  height: 115px !important;
   object-fit: cover;
 }
 a .item-card{
