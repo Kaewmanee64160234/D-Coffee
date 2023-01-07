@@ -4,21 +4,50 @@ import PromotionDialog from '@/components/PromotionDialog.vue';
 import AddmemberDialog from "@/components/AddmemberDialog.vue";
 import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
+import {useCartStore } from "@/stores/cart"
+import FindUser from "@/components/FindUser.vue";
+import ListComponent from "@/components/ListComponent.vue";
+import { ref } from "vue";
 import { useMenuStore } from "@/stores/menu";
+const loginStore = useLoginStore();
+const cartStore = useCartStore();
+const drawer  = ref(false);
 const menuStore = useMenuStore();
 const framList = menuStore.frameList;
-const loginStore = useLoginStore();
 
 </script>
 
 <template>
   <v-app>
-    <v-navigation-drawer expand-on-hover rail permanent>
-      <v-list>
+    <v-app-bar
+    color="primary"
+    prominent
+  >
+    <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+ loginStore.position +`)`"
+          :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
 
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-          :title="loginStore.loginName + ` (` + loginStore.position + `)`"
-          :subtitle="loginStore.loginName + `@gmail.com`"></v-list-item>
+
+    <v-toolbar-title>Point Of Sale</v-toolbar-title>
+
+    <v-spacer></v-spacer>
+
+    <v-btn variant="text" icon="mdi-magnify"></v-btn>
+
+    <v-btn variant="text" icon="mdi-filter"></v-btn>
+
+    <v-btn variant="text" icon="mdi-dots-vertical"></v-btn>
+  </v-app-bar>
+
+    <v-navigation-drawer  v-model="drawer" temporary location="left" permanent>
+      <v-list>
+      
+        
+        <v-list-item :prepend-avatar="loginStore.profile" :title="loginStore.loginName + ` (`+loginStore.position+`)`"
+          :subtitle="loginStore.loginName+`@gmail.com`">
+         
+         
+        </v-list-item>
 
       </v-list>
 
@@ -32,10 +61,8 @@ const loginStore = useLoginStore();
         <v-list-item :prepend-icon="mdiAccountMultiple" title="Customer" value="Customer"></v-list-item>
         <v-list-item :prepend-icon="mdiClipboardList" title="List" value="List"></v-list-item>
         <v-list-item :prepend-icon="mdiAccountTie" title="Employee" value="Employee"></v-list-item>
-        <v-list-item :prepend-icon="mdiAccountCircle" title="User" value="User"></v-list-item>
-        <v-list-item :prepend-icon="mdiLogoutVariant" title="Logout" value="Logout"
-          @click="loginStore.logout"></v-list-item>
-
+        <v-list-item :prepend-icon="mdiAccountCircle " title="User" value="User"></v-list-item>
+        <v-list-item :prepend-icon="mdiLogoutVariant " title="Logout" value="Logout" @click="loginStore.logout"></v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -70,63 +97,6 @@ const loginStore = useLoginStore();
         </div>
       </div>
 
-      <!-- <table>
-        <tr>
-          <td colspan="2">
-
-          </td>
-        </tr>
-        <tr class="contain-main-page">
-          <td class="menu-left">
-            <div>
-        <tr>
-
-          <td class="col-lg-6">
-            <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
-              <MenuCard :name="item.name" :cost="item.cost" type="" :img="item.img"></MenuCard>
-            </div>
-          </td>
-
-        </tr>
-        </div>
-
-        </td>
-        <td class="menu-right">
-          <tr class="list">
-            <h1>list</h1>
-            <h1>list</h1>
-            <h1>list</h1>
-
-          </tr>
-          <tr class="cal-member">
-            <td class="cal">
-              <h1>Cal</h1>
-              <h1>Cal</h1>
-              <h1>Cal</h1>
-              <h1>Cal</h1>
-
-            </td>
-            <td class="find-member">
-              <h1>find Member</h1>
-
-            </td>
-          </tr>
-          <tr class="group-button">
-            <td colspan="2">
-              <div class="col-md-12">
-                <PromotionDialog />
-                <AddmemberDialog />
-                <v-btn>Menu</v-btn>
-                <v-btn>Menu</v-btn>
-              </div>
-
-            </td>
-
-          </tr>
-        </td>
-        </tr>
-      </table> -->
-
   </v-app>
 
 </template>
@@ -138,7 +108,6 @@ const loginStore = useLoginStore();
 .layout {
   height: 100vh;
   width: 100%;
-  margin-left: 4vw;
   max-width: 1440px;
 }
 .item-side{

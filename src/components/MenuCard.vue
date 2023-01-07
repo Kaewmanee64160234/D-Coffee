@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+
 const props = defineProps({
   name: {
     type: String,
@@ -16,12 +17,16 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  price: {
+    type: Number,
+    required: true,
+  },
 
 });
 </script>
 
-<template>
-  <a href="#" onclick="alert('Hello')">
+<template >
+  <a href="#">
   <div class="card item-card">
   <img 
   class="card-img-top item-img"
@@ -29,7 +34,8 @@ const props = defineProps({
         alt="Card image cap"
         width="120px"
       />
-      <div class="card-body text-center"  >
+
+      <div class="card-body text-center" >
         <h5 class="card-title">{{ props.name }}</h5>
         <p class="card-text fontsm">{{ props.cost }}</p>
       </div>
