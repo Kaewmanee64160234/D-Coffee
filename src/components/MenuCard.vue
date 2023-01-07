@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import {useCartStore } from "@/stores/cart"
+const cartStore = useCartStore();
+
 const props = defineProps({
   name: {
     type: String,
@@ -19,19 +22,19 @@ const props = defineProps({
   price: {
     type: Number,
     required: true,
-  }
+  },
 });
 </script>
 
-<template>
-  <a href="#" onclick="alert(addToCard)">
+<template >
+  <a href="#">
   <div class="card item-card">
   <img 
   class="card-img-top item-img"
         :src="props.img"
         alt="Card image cap"
       />
-      <div class="card-body text-center">
+      <div class="card-body text-center" >
         <h5 class="card-title">{{ props.name }}</h5>
         <p class="card-text">{{ props.cost }}</p>
       </div>

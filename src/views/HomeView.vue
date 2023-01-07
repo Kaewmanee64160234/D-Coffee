@@ -6,10 +6,11 @@ import { useLoginStore } from "@/stores/login";
 import MenuCard from "@/components/MenuCard.vue";
 import { useMenuStore } from "@/stores/menu";
 import {useCartStore } from "@/stores/cart"
+const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const menuStore = useMenuStore();
 const framList = menuStore.frameList;
-const loginStore = useLoginStore();
+
 
 </script>
 
@@ -18,7 +19,7 @@ const loginStore = useLoginStore();
     <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
 
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+loginStore.position+`)`"
+        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="loginStore.loginName + ` (`+ loginStore.position +`)`"
           :subtitle="loginStore.loginName+`@gmail.com`"></v-list-item>
 
       </v-list>
@@ -50,16 +51,14 @@ const loginStore = useLoginStore();
         <tr class="contain-main-page">
           <td class="menu-left">
             <div class="col-md-4 mb-2 mt-4" v-for="item in framList" :key="item.img">
-              <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"  @click="cartStore.addToCard(item.name,item.cost)"></MenuCard>
+              <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"  @click="cartStore.addToCard(item)"></MenuCard>
             </div>
-
           </td>
           <td class="menu-right">
         <tr class="list">
-          <h1>list</h1>
-          <h1>list</h1>
-          <h1>list</h1>
-
+          <h1  v-for="item in cartStore.carts" :key="item.name" >
+      {{ item.name }} {{ item.cost }} 
+          </h1>
         </tr>
         <tr class="cal-member">
           <td class="cal">

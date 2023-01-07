@@ -1,12 +1,12 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { makeOptional } from '@/__VLS_types'
 
 export const useCartStore = defineStore('cart', () => {
-  const addToCard = (name:string,cost:string) => {
-    return name+" "+cost;
+  const carts:any = ref([]);
+  const addToCard = (item:Object) => {
+    carts.value.push(item);
     
 
   }
-  return { addToCard }
+  return { addToCard , carts }
 })
