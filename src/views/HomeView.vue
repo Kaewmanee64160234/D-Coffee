@@ -69,19 +69,19 @@ const framList = menuStore.frameList;
           <div class="col-md-6 item-side">
             <div class="row-md-6">
               <v-tabs fixed-tabs background-color="indigo" dark>
-                <v-tab>
+                <v-tab @click="menuStore.menuFilter('drink')">
                   เครื่องดื่ม
                 </v-tab>
-                <v-tab>
+                <v-tab @click="menuStore.menuFilter('food')">
                  อาหาร
                 </v-tab>
-                <v-tab>
+                <v-tab @click="menuStore.menuFilter('snack')">
                   ของหวาน
                 </v-tab>
               </v-tabs>
             </div>
             <div class="row">
-              <div class="col-md-3 mb-2 mt-4" v-for="item in framList" :key="item.img">
+              <div class="col-md-3 mb-2 mt-4" v-for="item in menuStore.menuSelected" :key="item.img">
                 <MenuCard :name="item.name" :cost="item.cost" :type="'Hello'" :img="item.img" :price="item.price"
                   @click="cartStore.addToCard(item)"></MenuCard>
               </div>

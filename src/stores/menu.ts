@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export const useMenuStore = defineStore("menu", () => {
   const dialogPromo1 = ref(false);
   const dialogPromo2 = ref(false);
+  const menuSelected = ref();
   const promo = ref([
    { id:1,name: "แฮปปี้รับแต้ม", price: 0, point: 50, code: "HAPPY250" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
     { id:2,name: "แลกคะแนนลดราคา", price: 10, point: 100, code: "Point10010" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Advanced_Info_Service_logo.svg/2560px-Advanced_Info_Service_logo.svg.png"},
@@ -15,10 +16,7 @@ export const useMenuStore = defineStore("menu", () => {
   const checkCode = (idCode: number)=>{
     const correctCode = promo.value.findIndex(code => code.id === idCode );
      realCode.value =   promo.value[correctCode].code
-
-
   }
-
   const realCode = ref("");
   const add_ons = ref([
     { name: "sugar 0 ", price: 0 },
@@ -36,7 +34,6 @@ export const useMenuStore = defineStore("menu", () => {
     { name: "bubble", price: 5 },
     { name: "Konjac jelly", price: 5 },
   ]);
-
   const frameList = ref([
     {
       name: "Americano",
@@ -387,7 +384,12 @@ export const useMenuStore = defineStore("menu", () => {
    
 
   ]);
+   const menuFilter = (type:string)=>{
+    const selectMenu = frameList.value.filter(menu => menu.type === type);
+    return menuSelected.value = selectMenu;
 
-  return { add_ons, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode};
+   }
+
+  return { add_ons, dialogPromo1, dialogPromo2, frameList, promo,checkCode ,realCode,menuFilter,menuSelected};
 });
 
