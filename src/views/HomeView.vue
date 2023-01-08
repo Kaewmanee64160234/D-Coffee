@@ -13,19 +13,20 @@ import SearchMember from "@/components/SearchMember.vue";
 import { useEditStore } from "@/stores/edit";
 import { useOrderStore } from "@/stores/order";
 import { useMemberStore } from "@/stores/member";
+
 const loginStore = useLoginStore();
 const cartStore = useCartStore();
 const drawer = ref(false);
 const menuStore = useMenuStore();
 const orderStore = useOrderStore();
 const memberStore = useMemberStore();
+
 // const framList = menuStore.frameList;
 
 onMounted(() => {
   menuStore.menuFilter("drink");
 });
 </script>
-
 <template>
   <v-app>
     <v-app-bar color="primary" prominent>
@@ -100,29 +101,8 @@ onMounted(() => {
 
           <div class="col-md-6 mt-2">
             <div class="table-responsive cart-table">
-              <ListComponent/>
-             <!-- <table class="table"> -->
-                <!-- <thead> -->
-                  <!-- <tr> -->
-                    <!-- <th scope="col" class="text-center">รายการ</th> -->
-                    <!-- <th scope="col" class="text-center">ราคา</th> -->
-                    <!-- <th scope="col" class="text-center">จำนวน</th> -->
-                    <!-- <th scope="col" class="text-center">รวม</th> -->
-                  <!-- </tr> -->
-                <!-- </thead> -->
-                <!-- <tbody> -->
-                  <!-- <tr v-for="item in cartStore.carts" :key="item.name"> -->
-                    <!-- <th scope="col"> -->
-                    <!-- <td>{{ item.name }}</td> -->
-                    <!-- <td scope="col" class="text-center">{{ item.price }}</td> -->
-                    <!-- <td class="text-center">1</td> -->
-                    <!-- <td class="text-center">{{ item.price * 1 }}</td> -->
-                    <!-- <td class="text-center"><v-btn color="error" style="margin-left: 30px;">ยกเลิก</v-btn></td> -->
-                    <!-- <td class="text-center"><v-btn color="secondary" style="margin-left: 10px;" -->
-                        <!-- @click="editedMenu">แก้ไข</v-btn> </td> -->
-                  <!-- </tr> -->
-                <!-- </tbody> -->
-              <!-- </table> -->
+              <ListComponent />
+          
             </div>
 
             <div class="summary mt-2">
@@ -169,17 +149,29 @@ onMounted(() => {
                   <div class="col">
                     <FindUser></FindUser>
                   </div>
-                </div>
-                <div class="row-md-3">
-                  <tr>
-                  <td class="col">
-                    <v-btn>Save</v-btn>
-                  </td>
-                  <td></td>
-                  <td class="col">
-                    <v-btn>Clear</v-btn>
-                  </td>
-                  </tr>
+                    <div class="col">
+                      <v-dialog v-model="loginStore.dialog" persistent width="80%">
+                        <template v-slot:activator="{ props }">
+                          <v-btn class="mt-2" color="red" v-bind="props">
+                            Clear
+                          </v-btn>
+                        </template>
+                        <v-card>
+                          <v-card-title class="text-h5">
+                            คุณต้องการยกเลิกรายการทั้งหมดใช่หรือไม่?
+                          </v-card-title>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green-darken-1" variant="text" @click="cartStore.clear">
+                              ใช่
+                            </v-btn>
+                            <v-btn color="green-darken-1" variant="text" @click="loginStore.dialog = false">
+                              ไม่
+                            </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                    </div>
                 </div>
               </v-row>
             </div>
@@ -187,10 +179,8 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
-
-
   </v-app>
+
 
 </template>
 <style scoped>
@@ -283,5 +273,10 @@ td {
 .group-button {
 
   height: 20%;
+}
+
+.table,
+table tr td {
+  border: 0px;
 }
 </style>
