@@ -9,8 +9,6 @@ const phonInput = ref("");
 const close = () => {
   dialog.value = false;
   phonInput.value = "";
-  memberStore.IsSerarch = false;
-
 }
 
 
