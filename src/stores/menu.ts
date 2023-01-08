@@ -180,7 +180,7 @@ export const useMenuStore = defineStore("menu", () => {
       img: "https://i.pinimg.com/564x/5f/4f/40/5f4f40237dfd4b86514cdaa15227a2f8.jpg",
     },
     {
-      name: "บลูฮาวาย อิตาเลียนโซดา",
+      name: "บลูฮาวาย อิตาเลี่ยนโซดา",
       type: "drink",
       cost: "ราคา 30 บาท",
       price: 30,

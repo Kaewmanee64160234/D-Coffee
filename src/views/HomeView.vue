@@ -171,12 +171,15 @@ onMounted(() => {
                   </div>
                 </div>
                 <div class="row-md-3">
-                  <div class="col">
+                  <tr>
+                  <td class="col">
                     <v-btn>Save</v-btn>
-                  </div>
-                  <div class="col">
+                  </td>
+                  <td></td>
+                  <td class="col">
                     <v-btn>Clear</v-btn>
-                  </div>
+                  </td>
+                  </tr>
                 </div>
               </v-row>
             </div>

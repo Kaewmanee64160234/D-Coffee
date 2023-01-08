@@ -75,12 +75,14 @@ const clear = () => {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
+          <div class="click" >
           <v-btn color="blue-darken-1" variant="text" @click="clear">
             Close
           </v-btn>
-          <v-btn color="blue-darken-1" variant="text" @click="save">
+          <v-btn color="blue-darken-1" variant="text" @click="save" ma>
             Save
           </v-btn>
+          </div>
         </v-card-actions>
       </v-card>
     </v-dialog>
