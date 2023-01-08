@@ -149,29 +149,36 @@ onMounted(() => {
                   <div class="col">
                     <FindUser></FindUser>
                   </div>
-                    <div class="col">
-                      <v-dialog v-model="loginStore.dialog" persistent width="80%">
-                        <template v-slot:activator="{ props }">
-                          <v-btn class="mt-2" color="red" v-bind="props">
-                            Clear
+                   
+                </div>
+
+                <div class="row-md-3">
+                  <div class="col" style="padding-bottom: 40px;">
+                    <v-dialog v-model="loginStore.dialog" persistent width="80%">
+                      <template v-slot:activator="{ props }">
+                        <v-btn class="mt-2" color="red" v-bind="props" width="120px">
+                          Clear
+                        </v-btn>
+                      </template>
+                      <v-card>
+                        <v-card-title class="text-h5">
+                          คุณต้องการยกเลิกรายการทั้งหมดใช่หรือไม่?
+                        </v-card-title>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="green-darken-1" variant="text" @click="cartStore.clear">
+                            ใช่
                           </v-btn>
-                        </template>
-                        <v-card>
-                          <v-card-title class="text-h5">
-                            คุณต้องการยกเลิกรายการทั้งหมดใช่หรือไม่?
-                          </v-card-title>
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="green-darken-1" variant="text" @click="cartStore.clear">
-                              ใช่
-                            </v-btn>
-                            <v-btn color="green-darken-1" variant="text" @click="loginStore.dialog = false">
-                              ไม่
-                            </v-btn>
-                          </v-card-actions>
-                        </v-card>
-                      </v-dialog>
-                    </div>
+                          <v-btn color="green-darken-1" variant="text" @click="loginStore.dialog = false">
+                            ไม่
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </div>
+                  <div class="col" >
+                    <v-btn width="120px" color="secondary">Save</v-btn>
+                  </div>
                 </div>
               </v-row>
             </div>
