@@ -10,7 +10,6 @@ import ListComponent from "@/components/ListComponent.vue";
 import { computed, onMounted, ref } from "vue";
 import { useMenuStore } from "@/stores/menu";
 import SearchMember from "@/components/SearchMember.vue";
-import { useEditStore } from "@/stores/edit";
 import { useOrderStore } from "@/stores/order";
 import { useMemberStore } from "@/stores/member";
 
