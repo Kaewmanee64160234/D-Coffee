@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { useEditStore } from "@/stores/edit"
-import { useCartStore } from "@/stores/cart";
+import { useCartStore } from "@/stores/cart"
+import { useCancelStore } from "@/stores/cancel"
 const editStore = useEditStore();
 const cartStore = useCartStore();
+const cancelStore = useCancelStore();
 const editedMenu = () => {
     editStore.dialog1 = true;
 
 } 
+const cancel = () => {
+    cancelStore.dialog1 = true;
+}
 </script>
 <template>
     <v-alert color="white">
