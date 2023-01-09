@@ -28,12 +28,12 @@ const cancel = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in cartStore.carts" :key="item.id">
+                  <tr v-for="item in cartStore.carts" :key="item.name">
                     <td style="text-align: center;">{{ item.name }}</td>
                     <td scope="col" class="text-center">{{ item.price }}</td>
                     <td class="text-center">1</td>
                     <td class="text-center">{{ item.price * 1 }}</td>
-                    <td class="text-center"><v-btn color="error" style="margin-left: 30px;"  @click="cartStore.deleteList(item.id)">ยกเลิก</v-btn></td>
+                    <td class="text-center"><v-btn color="error" style="margin-left: 30px;">ยกเลิก</v-btn></td>
                     <td class="text-center"><v-btn color="secondary" style="margin-left: 10px;"
                         @click="editedMenu">แก้ไข</v-btn> </td>
                   </tr>
